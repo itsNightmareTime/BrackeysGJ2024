@@ -5,5 +5,5 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Store" type="Sprite2D" parent="."]
-position = Vector2(984, 487)
+position = Vector2(960, 540)
 texture = ExtResource("1_drequ")

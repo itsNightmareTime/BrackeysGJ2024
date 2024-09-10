@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccxv27ygawfan"
-path="res://.godot/imported/Lung_shading.png-849e47723651b7f4d288595ec099b030.ctex"
+uid="uid://dwsb15crke6x4"
+path="res://.godot/imported/Left_Lung.png-fa7a3f5a494e1fef63634154f85b99ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Objects/Lungs/Lung_shading.png"
-dest_files=["res://.godot/imported/Lung_shading.png-849e47723651b7f4d288595ec099b030.ctex"]
+source_file="res://Assets/Objects/Lungs/Left_Lung.png"
+dest_files=["res://.godot/imported/Left_Lung.png-fa7a3f5a494e1fef63634154f85b99ff.ctex"]
 
 [params]
 

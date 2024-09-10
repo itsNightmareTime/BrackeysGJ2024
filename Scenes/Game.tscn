@@ -1,0 +1,33 @@
+[gd_scene load_steps=8 format=3 uid="uid://b3hmd0h6m3eei"]
+
+[ext_resource type="Texture2D" uid="uid://bq0r68ifa38rn" path="res://Assets/Objects/Store.png" id="1_iojbl"]
+[ext_resource type="PackedScene" uid="uid://ddue67srgxhwd" path="res://Scenes/Characters/Cashier.tscn" id="2_j8olq"]
+[ext_resource type="PackedScene" uid="uid://m3ebpcl7nk5k" path="res://Scenes/Characters/Customer1.tscn" id="3_ta2x0"]
+[ext_resource type="PackedScene" uid="uid://r7cmbwqi5jo1" path="res://Scenes/Characters/Customer2.tscn" id="4_b87fn"]
+[ext_resource type="PackedScene" uid="uid://both3knwlyfde" path="res://Scenes/Characters/Customer3.tscn" id="5_wcp3x"]
+[ext_resource type="PackedScene" uid="uid://b7irbiy1fbr4x" path="res://Scenes/Characters/Customer4.tscn" id="6_ar3ca"]
+[ext_resource type="PackedScene" uid="uid://bsyxm5m1dnwxl" path="res://Scenes/Characters/Customer5.tscn" id="7_3ukba"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_iojbl")
+
+[node name="Cashier" parent="." instance=ExtResource("2_j8olq")]
+position = Vector2(1557, 280)
+
+[node name="Customer1" parent="." instance=ExtResource("3_ta2x0")]
+position = Vector2(388, 543)
+
+[node name="Customer2" parent="." instance=ExtResource("4_b87fn")]
+position = Vector2(647, 453)
+
+[node name="Customer3" parent="." instance=ExtResource("5_wcp3x")]
+position = Vector2(640, 668)
+
+[node name="Customer4" parent="." instance=ExtResource("6_ar3ca")]
+position = Vector2(1236, 473)
+
+[node name="Customer5" parent="." instance=ExtResource("7_3ukba")]
+position = Vector2(915, 591)

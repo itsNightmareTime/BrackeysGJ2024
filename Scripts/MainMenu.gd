@@ -1,6 +1,6 @@
 extends Node
 
-@export var game_scene: String = "res://Scenes/test.tscn"
+@export var game_scene: String = "res://Scenes/Game.tscn"
 
 
 # Called when the node enters the scene tree for the first time.

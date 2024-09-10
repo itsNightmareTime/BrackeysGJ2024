@@ -1,0 +1,92 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0jxbp02hekn8"]
+
+[ext_resource type="AudioStream" uid="uid://borijloea3y01" path="res://Assets/Sounds/Musak.mp3" id="1_ng4qg"]
+[ext_resource type="Script" path="res://Scripts/SoundTester.gd" id="1_x55s6"]
+[ext_resource type="AudioStream" uid="uid://cdhfw144b6023" path="res://Assets/Sounds/Beep.wav" id="2_a0ott"]
+[ext_resource type="PackedScene" uid="uid://wqv5j3lrrreu" path="res://Scenes/VolumeControl.tscn" id="4_50usd"]
+
+[node name="SoundTester" type="Node2D"]
+script = ExtResource("1_x55s6")
+
+[node name="MusakPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_ng4qg")
+bus = &"Music"
+
+[node name="BeepPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_a0ott")
+bus = &"Effects"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Canvas" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Canvas"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.5
+offset_top = -58.0
+offset_right = 91.5
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Canvas/PanelContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Canvas/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="BeepButton" type="Button" parent="CanvasLayer/Canvas/PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Play Beep"
+
+[node name="MusicButton" type="Button" parent="CanvasLayer/Canvas/PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Play Musak
+"
+
+[node name="StopMusicButton" type="Button" parent="CanvasLayer/Canvas/PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Stop Musak
+"
+
+[node name="VolumeOptions" type="PanelContainer" parent="CanvasLayer/Canvas"]
+layout_mode = 1
+offset_right = 393.0
+offset_bottom = 209.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Canvas/VolumeOptions"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Canvas/VolumeOptions/MarginContainer"]
+layout_mode = 2
+
+[node name="MainVolume" parent="CanvasLayer/Canvas/VolumeOptions/MarginContainer/GridContainer" instance=ExtResource("4_50usd")]
+layout_mode = 2
+volume_type = "Main"
+audio_bus_name = "Master"
+
+[node name="MusicVolume" parent="CanvasLayer/Canvas/VolumeOptions/MarginContainer/GridContainer" instance=ExtResource("4_50usd")]
+layout_mode = 2
+volume_type = "Music"
+audio_bus_name = "Music"
+
+[node name="EffectsVolume" parent="CanvasLayer/Canvas/VolumeOptions/MarginContainer/GridContainer" instance=ExtResource("4_50usd")]
+layout_mode = 2
+volume_type = "Effects"
+audio_bus_name = "Effects"
+
+[connection signal="pressed" from="CanvasLayer/Canvas/PanelContainer/MarginContainer/GridContainer/BeepButton" to="." method="_on_beep_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Canvas/PanelContainer/MarginContainer/GridContainer/MusicButton" to="." method="_on_music_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Canvas/PanelContainer/MarginContainer/GridContainer/StopMusicButton" to="." method="_on_stop_music_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Canvas/PanelContainer/MarginContainer/GridContainer/StopMusicButton" to="." method="_on_music_button_pressed"]

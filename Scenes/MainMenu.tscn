@@ -1,0 +1,84 @@
+[gd_scene load_steps=5 format=3 uid="uid://cog45ywyroodj"]
+
+[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_y6rw6"]
+[ext_resource type="Texture2D" uid="uid://bq0r68ifa38rn" path="res://Assets/Objects/Store.png" id="1_yaj5t"]
+[ext_resource type="Theme" uid="uid://c0bs04tbhotki" path="res://MainTheme.tres" id="3_vihyn"]
+[ext_resource type="PackedScene" uid="uid://wqv5j3lrrreu" path="res://Scenes/VolumeControl.tscn" id="4_gcomr"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_y6rw6")
+
+[node name="Store" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_yaj5t")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="OuterMargin" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainCanvasItem" type="Control" parent="CanvasLayer/OuterMargin"]
+layout_mode = 2
+
+[node name="VolumeOptions" type="PanelContainer" parent="CanvasLayer/OuterMargin/MainCanvasItem"]
+layout_mode = 1
+offset_right = 393.0
+offset_bottom = 152.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/OuterMargin/MainCanvasItem/VolumeOptions"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/OuterMargin/MainCanvasItem/VolumeOptions/MarginContainer"]
+layout_mode = 2
+
+[node name="MainVolume" parent="CanvasLayer/OuterMargin/MainCanvasItem/VolumeOptions/MarginContainer/GridContainer" instance=ExtResource("4_gcomr")]
+layout_mode = 2
+volume_type = "Main"
+audio_bus_name = "Master"
+
+[node name="MusicVolume" parent="CanvasLayer/OuterMargin/MainCanvasItem/VolumeOptions/MarginContainer/GridContainer" instance=ExtResource("4_gcomr")]
+layout_mode = 2
+volume_type = "Music"
+audio_bus_name = "Music"
+
+[node name="EffectsVolume" parent="CanvasLayer/OuterMargin/MainCanvasItem/VolumeOptions/MarginContainer/GridContainer" instance=ExtResource("4_gcomr")]
+layout_mode = 2
+volume_type = "Effects"
+audio_bus_name = "Effects"
+
+[node name="MenuPanel" type="PanelContainer" parent="CanvasLayer/OuterMargin/MainCanvasItem"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/OuterMargin/MainCanvasItem/MenuPanel"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/OuterMargin/MainCanvasItem/MenuPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="CanvasLayer/OuterMargin/MainCanvasItem/MenuPanel/MarginContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("3_vihyn")
+text = "Start"
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/OuterMargin/MainCanvasItem/MenuPanel/MarginContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("3_vihyn")
+text = "Exit"
+
+[connection signal="pressed" from="CanvasLayer/OuterMargin/MainCanvasItem/MenuPanel/MarginContainer/GridContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/OuterMargin/MainCanvasItem/MenuPanel/MarginContainer/GridContainer/ExitButton" to="." method="_on_exit_button_pressed"]

@@ -7,16 +7,11 @@ extends Node
 func _ready():
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func _on_beep_button_pressed():
-	beep_player.play(0)
+	beep_player.play()
 
 func _on_music_button_pressed():
-	musak_player.play(0)
+	musak_player.play()
 
 func _on_stop_music_button_pressed():
 	musak_player.stop()

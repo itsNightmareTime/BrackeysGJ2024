@@ -89,4 +89,3 @@ audio_bus_name = "Effects"
 [connection signal="pressed" from="CanvasLayer/Canvas/PanelContainer/MarginContainer/GridContainer/BeepButton" to="." method="_on_beep_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Canvas/PanelContainer/MarginContainer/GridContainer/MusicButton" to="." method="_on_music_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Canvas/PanelContainer/MarginContainer/GridContainer/StopMusicButton" to="." method="_on_stop_music_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Canvas/PanelContainer/MarginContainer/GridContainer/StopMusicButton" to="." method="_on_music_button_pressed"]

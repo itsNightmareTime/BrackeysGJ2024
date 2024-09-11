@@ -1,5 +1,6 @@
 extends Node2D
 
+# Handles the breathing state. The animation_names index correspond with the enum values
 enum breathingState {
 	breathe_in,
 	hold_breath,
@@ -10,31 +11,106 @@ enum breathingState {
 var animation_names = ["breathe_in", "hold_breath", "breathe_out", "pause"]
 
 @export var init_breath_speed: float = 1.0
-@export var init_breath_state: breathingState = breathingState.breathe_in
-var current_breath_state: breathingState
-var current_breath_speed: float
-var auto_breathing: bool = true
-
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-# Called when the node enters the scene tree for the first time.
+# Handles the breathing states of the animation
+var init_breath_state: breathingState = breathingState.breathe_in
+var current_breath_state: breathingState
+
+# changes the speed by changing the animation speed_scale
+var current_breath_speed: float
+
+var can_breath_in: bool = true 
+var is_breathing_in: bool = false
+var let_go_of_breath: bool = true
+var let_go_early: bool = false
+var can_breathe_again: bool = true
+
+# Handles the frustration points add by not breathing well and removed with successful breaths
+var failed_breathing_points: float = 0.0
+var successful_breathing_points: float = 0.0
+
+# Shader used for the outline indicator.
+var glow_shader: Material = self.material
+
+
+
 func _ready() -> void:
 	current_breath_speed = init_breath_speed
 	current_breath_state = init_breath_state
 	animation_player.speed_scale = current_breath_speed
 	animation_player.play(animation_names[current_breath_state])
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 	
-# signal occurs when an animation ends and then cycles the current animation to the next state
-# when auto breathing is on, the animations will automatically go the next state
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if auto_breathing:
-		if current_breath_state == breathingState.pause:
-			current_breath_state = breathingState.breathe_in
+	if glow_shader is ShaderMaterial:
+		var glow_shader = glow_shader as ShaderMaterial
+		shader_highlighted()
+
+func _process(delta: float) -> void:
+	# If the player keeps holding the mouse button after a failed breath this stops them from breathing in again
+	if not let_go_of_breath and not can_breath_in:
+		shader_off()
+		animation_player.speed_scale = 1
+		can_breathe_again = false
+		
+	# When the player releases the mouse button it allows them to breath in again next cycle
+	# This also tracks if the player released too early during a breath or waited out the animation
+	if Input.is_action_just_released("breathing"):
+		print("let go of breath")
+		if can_breath_in and is_breathing_in:
+			let_go_early = true
+		is_breathing_in = false
+		let_go_of_breath = true
+		# set animation speed based on let_go_early
+		animation_player.speed_scale = 1.5
+		shader_off()
+		if let_go_early:
+			can_breathe_again = false
 		else:
-			current_breath_state += 1
-		animation_player.play(animation_names[current_breath_state])
+			can_breathe_again = true
+	
+	# Tracks when the player is holding in a breath. Can only happen as long as they didn't already try to
+	# breathe during this animation cycle and the current animation is either breathing in or holding breath
+	if Input.is_action_pressed("breathing") and can_breath_in and can_breathe_again and not let_go_early:
+		print("breathing in")
+		is_breathing_in = true
+		let_go_of_breath = false
+		# set animation speed based on let_go_early
+		animation_player.speed_scale = 0.5
+		shader_breathing()
+
+# changes the shader outline to indicate that the player is holding their breath 
+func shader_breathing() -> void:
+	glow_shader.set_shader_parameter("is_breathing", true)
+	glow_shader.set_shader_parameter("shader_on", true)
+
+# changes the shader outline to indicate that the player can hold their breath now
+func shader_highlighted() -> void:
+	glow_shader.set_shader_parameter("is_breathing", false)
+	glow_shader.set_shader_parameter("shader_on", true)
+
+# removes the shader visibility to show that a breath can no longer be held, either
+# because the animation is over or the player let go too early during the breath
+func shader_off() -> void:
+	glow_shader.set_shader_parameter("shader_on", false)
+
+
+# signal occurs when an animation ends and then cycles the current animation to the next state and plays it
+# it will also change the logic on if a player can even attempt to breathe in again or not
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if current_breath_state == breathingState.pause:
+		current_breath_state = breathingState.breathe_in
+	else:
+		current_breath_state += 1
+		
+	if current_breath_state == breathingState.breathe_in:
+		can_breath_in = true
+		let_go_early = false
+		shader_highlighted()
+		
+	if current_breath_state == breathingState.breathe_out:
+		can_breath_in = false
+		if not is_breathing_in:
+			can_breathe_again = true
+		shader_off()
+		
+	animation_player.play(animation_names[current_breath_state])

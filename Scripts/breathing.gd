@@ -56,9 +56,10 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_released("breathing"):
 		if can_breath_in and is_breathing_in:
 			let_go_early = true
+			if can_breathe_again:
+				speed_up_lung_speed(breathing_failure_speed_increment)
+				spawn_feedback_text("bad!", "red")
 			can_breathe_again = false
-			speed_up_lung_speed(breathing_failure_speed_increment)
-			spawn_feedback_text("bad!", "red")
 		else:
 			can_breathe_again = true
 		is_breathing_in = false

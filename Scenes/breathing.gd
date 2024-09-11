@@ -1,24 +1,30 @@
 extends Node2D
 
-# Handles the breathing state. The animation_names index correspond with the enum values
+# Handles the breathing state. The animation_names index correspond with the breathingState values
 enum breathingState {
 	breathe_in,
 	hold_breath,
 	breathe_out,
 	pause
 }
-
 var animation_names = ["breathe_in", "hold_breath", "breathe_out", "pause"]
 
-@export var init_breath_speed: float = 1.0
+# lung animation player
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+# Shader used for the outline indicator.
+var glow_shader: Material = self.material
 
 # Handles the breathing states of the animation
 var init_breath_state: breathingState = breathingState.breathe_in
 var current_breath_state: breathingState
 
 # changes the speed by changing the animation speed_scale
-var current_breath_speed: float
+@export var current_breath_speed: float = 1
+const max_lung_speed: float = 3.25
+const min_lung_speed: float = 0.5
+const breathing_speed_increment: float = 0.001
+const breathing_speed_success: float = 0.35
+const breathing_failure_speed_increment: float = 0.35
 
 var can_breath_in: bool = true 
 var is_breathing_in: bool = false
@@ -26,17 +32,7 @@ var let_go_of_breath: bool = true
 var let_go_early: bool = false
 var can_breathe_again: bool = true
 
-# Handles the frustration points add by not breathing well and removed with successful breaths
-var failed_breathing_points: float = 0.0
-var successful_breathing_points: float = 0.0
-
-# Shader used for the outline indicator.
-var glow_shader: Material = self.material
-
-
-
 func _ready() -> void:
-	current_breath_speed = init_breath_speed
 	current_breath_state = init_breath_state
 	animation_player.speed_scale = current_breath_speed
 	animation_player.play(animation_names[current_breath_state])
@@ -46,36 +42,34 @@ func _ready() -> void:
 		shader_highlighted()
 
 func _process(delta: float) -> void:
+	print(current_breath_speed)
+	
 	# If the player keeps holding the mouse button after a failed breath this stops them from breathing in again
 	if not let_go_of_breath and not can_breath_in:
 		shader_off()
-		animation_player.speed_scale = 1
 		can_breathe_again = false
 		
 	# When the player releases the mouse button it allows them to breath in again next cycle
 	# This also tracks if the player released too early during a breath or waited out the animation
 	if Input.is_action_just_released("breathing"):
-		print("let go of breath")
 		if can_breath_in and is_breathing_in:
 			let_go_early = true
 		is_breathing_in = false
 		let_go_of_breath = true
-		# set animation speed based on let_go_early
-		animation_player.speed_scale = 1.5
 		shader_off()
 		if let_go_early:
 			can_breathe_again = false
+			speed_up_lung_speed(breathing_failure_speed_increment)
 		else:
 			can_breathe_again = true
+			slow_down_lung_speed(breathing_speed_success)
 	
 	# Tracks when the player is holding in a breath. Can only happen as long as they didn't already try to
 	# breathe during this animation cycle and the current animation is either breathing in or holding breath
 	if Input.is_action_pressed("breathing") and can_breath_in and can_breathe_again and not let_go_early:
-		print("breathing in")
 		is_breathing_in = true
 		let_go_of_breath = false
-		# set animation speed based on let_go_early
-		animation_player.speed_scale = 0.5
+		slow_down_lung_speed(breathing_speed_increment)
 		shader_breathing()
 
 # changes the shader outline to indicate that the player is holding their breath 
@@ -93,7 +87,18 @@ func shader_highlighted() -> void:
 func shader_off() -> void:
 	glow_shader.set_shader_parameter("shader_on", false)
 
-
+func speed_up_lung_speed(increment: float) -> void:
+	current_breath_speed += increment
+	if current_breath_speed >= max_lung_speed:
+		current_breath_speed = max_lung_speed
+	animation_player.speed_scale = current_breath_speed
+	
+func slow_down_lung_speed(increment: float) -> void:
+	current_breath_speed -= increment
+	if current_breath_speed <= min_lung_speed:
+		current_breath_speed = min_lung_speed
+	animation_player.speed_scale = current_breath_speed
+	
 # signal occurs when an animation ends and then cycles the current animation to the next state and plays it
 # it will also change the logic on if a player can even attempt to breathe in again or not
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
@@ -105,7 +110,8 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if current_breath_state == breathingState.breathe_in:
 		can_breath_in = true
 		let_go_early = false
-		shader_highlighted()
+		if can_breathe_again:
+			shader_highlighted()
 		
 	if current_breath_state == breathingState.breathe_out:
 		can_breath_in = false

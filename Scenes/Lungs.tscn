@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://dm0qfuj7ior24"]
 
 [ext_resource type="Texture2D" uid="uid://bikvmftytum20" path="res://Assets/Objects/Lungs/Left_Lung.png" id="1_8go1e"]
-[ext_resource type="Script" path="res://Scenes/breathing.gd" id="1_ftgul"]
+[ext_resource type="Script" path="res://Scripts/breathing.gd" id="1_ftgul"]
 [ext_resource type="Texture2D" uid="uid://otl3rjxe8cbc" path="res://Assets/Objects/Lungs/Right_Lung.png" id="2_6mvk7"]
 [ext_resource type="Shader" path="res://Shaders/Lungs.gdshader" id="2_pix8q"]
 [ext_resource type="Texture2D" uid="uid://c8uc4cilkldnj" path="res://Assets/Objects/Lungs/Trachea.png" id="3_pup7d"]

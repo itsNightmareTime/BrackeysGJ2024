@@ -13,6 +13,8 @@ var animation_names = ["breathe_in", "hold_breath", "breathe_out", "pause"]
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 # Shader used for the outline indicator.
 var glow_shader: Material = self.material
+# loads the floating text scene for visual feedback
+var floating_text = preload("res://Scenes/floating_text.tscn")
 
 # Handles the breathing states of the animation
 var init_breath_state: breathingState = breathingState.breathe_in
@@ -54,15 +56,18 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_released("breathing"):
 		if can_breath_in and is_breathing_in:
 			let_go_early = true
+			can_breathe_again = false
+			speed_up_lung_speed(breathing_failure_speed_increment)
+			spawn_feedback_text("bad!", "red")
+		else:
+			can_breathe_again = true
 		is_breathing_in = false
 		let_go_of_breath = true
 		shader_off()
 		if let_go_early:
-			can_breathe_again = false
-			speed_up_lung_speed(breathing_failure_speed_increment)
+			pass
 		else:
 			can_breathe_again = true
-			slow_down_lung_speed(breathing_speed_success)
 	
 	# Tracks when the player is holding in a breath. Can only happen as long as they didn't already try to
 	# breathe during this animation cycle and the current animation is either breathing in or holding breath
@@ -99,6 +104,21 @@ func slow_down_lung_speed(increment: float) -> void:
 		current_breath_speed = min_lung_speed
 	animation_player.speed_scale = current_breath_speed
 	
+func spawn_feedback_text(text : String, color : String) -> void:
+	# Create an instance of the scene
+	var floating_text_instance = floating_text.instantiate()
+
+	# Calculate the position to be right above and centered with the spawning node
+	var spawn_position = self.position 
+	floating_text_instance.position = spawn_position
+
+	# Add the instance to the scene tree
+	add_child(floating_text_instance)
+
+	# Call the set_and_start function on the instance
+	floating_text_instance.set_and_start(text, color)
+
+
 # signal occurs when an animation ends and then cycles the current animation to the next state and plays it
 # it will also change the logic on if a player can even attempt to breathe in again or not
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
@@ -117,6 +137,9 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		can_breath_in = false
 		if not is_breathing_in:
 			can_breathe_again = true
+		else:
+			slow_down_lung_speed(breathing_speed_success)
+			spawn_feedback_text("good!", "blue")
 		shader_off()
 		
 	animation_player.play(animation_names[current_breath_state])

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3hmd0h6m3eei"]
+[gd_scene load_steps=10 format=3 uid="uid://b3hmd0h6m3eei"]
 
 [ext_resource type="Texture2D" uid="uid://bq0r68ifa38rn" path="res://Assets/Objects/Store.png" id="1_iojbl"]
 [ext_resource type="PackedScene" uid="uid://ddue67srgxhwd" path="res://Scenes/Characters/Cashier.tscn" id="2_j8olq"]
@@ -8,8 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b7irbiy1fbr4x" path="res://Scenes/Characters/Customer4.tscn" id="6_ar3ca"]
 [ext_resource type="PackedScene" uid="uid://bsyxm5m1dnwxl" path="res://Scenes/Characters/Customer5.tscn" id="7_3ukba"]
 [ext_resource type="PackedScene" uid="uid://dm0qfuj7ior24" path="res://Scenes/Lungs.tscn" id="8_hoh6h"]
-[ext_resource type="Texture2D" uid="uid://se6qv14ybqfo" path="res://Assets/UI/Scanning_UI.png" id="9_hvotb"]
-[ext_resource type="Texture2D" uid="uid://bi1luit52lbhe" path="res://Assets/Keys/A.png" id="10_uxnfo"]
+[ext_resource type="PackedScene" uid="uid://c6qh1ey5xwyrl" path="res://Scenes/scanner.tscn" id="9_1i5wl"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -38,12 +37,5 @@ position = Vector2(915, 591)
 [node name="Lungs" parent="." instance=ExtResource("8_hoh6h")]
 position = Vector2(1450, 929)
 
-[node name="ScanningUi" type="Sprite2D" parent="."]
-position = Vector2(963, 685)
-texture = ExtResource("9_hvotb")
-
-[node name="A" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.666667)
-position = Vector2(989, 682)
-scale = Vector2(0.42, 0.42)
-texture = ExtResource("10_uxnfo")
+[node name="Scanner" parent="." instance=ExtResource("9_1i5wl")]
+position = Vector2(959, 597)

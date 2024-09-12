@@ -1,12 +1,22 @@
 extends Node2D
 
+class_name Key # used to create this type of object so methods can be recognized in other scripts
+
 @onready var key: Sprite2D = $Sprite2D
-var move_speed: float = -10.0
+var move_speed: float = -1.0
+var key_identity: String
+#var key_scale: float = 0.42
+
+func _ready() -> void:
+	#scale.x = key_scale
+	#scale.y = key_scale
+	set_alpha_key_in_queue()
 
 # loads the image and turns it into a texture
-func set_key_type(filename : String) -> void:
+func set_key_type(filename : String, identity : String) -> void:
 	var image = Image.load_from_file(filename)
 	key.texture = ImageTexture.create_from_image(image)
+	key_identity = identity
 
 func remove_key() -> void:
 	self.queue_free()
@@ -29,6 +39,6 @@ func set_alpha_pressed_key() -> void:
 	color.a = 0.50
 	key.modulate = color
 
-# moves key left, handled by scanner
+# moves key left, handled by scanner                
 func move_left() -> void:
 	transform.origin = transform.origin + Vector2(move_speed, 0)

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6qh1ey5xwyrl"]
+
+[ext_resource type="Texture2D" uid="uid://se6qv14ybqfo" path="res://Assets/UI/Scanning_UI.png" id="1_u05wr"]
+
+[node name="Scanner" type="Node2D"]
+
+[node name="Bar" type="Sprite2D" parent="."]
+texture = ExtResource("1_u05wr")

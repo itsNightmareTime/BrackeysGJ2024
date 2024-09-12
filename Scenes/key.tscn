@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyh8b2b4sjk12"]
+
+[ext_resource type="Script" path="res://Scripts/key.gd" id="1_bbr6u"]
+[ext_resource type="Texture2D" uid="uid://bi1luit52lbhe" path="res://Assets/Keys/A.png" id="1_dpig8"]
+
+[node name="Key" type="Node2D"]
+script = ExtResource("1_bbr6u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.666667)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("1_dpig8")

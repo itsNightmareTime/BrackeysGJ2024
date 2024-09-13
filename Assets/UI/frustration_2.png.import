@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp021c16cr71x"
-path="res://.godot/imported/Lung_UI_Bar.png-5d182a723413bf8853b368fb401ea615.ctex"
+uid="uid://roavapxe40s8"
+path="res://.godot/imported/frustration_2.png-6768bb205b8343855936ebe06a7c3ba3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Objects/Lungs/Lung_UI_Bar.png"
-dest_files=["res://.godot/imported/Lung_UI_Bar.png-5d182a723413bf8853b368fb401ea615.ctex"]
+source_file="res://Assets/UI/frustration_2.png"
+dest_files=["res://.godot/imported/frustration_2.png-6768bb205b8343855936ebe06a7c3ba3.ctex"]
 
 [params]
 

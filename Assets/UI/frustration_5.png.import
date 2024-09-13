@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm0dsrc1bgxhu"
-path="res://.godot/imported/frustration_3.png-0dc9fa3d174b1f2a996be6f1d8947dfe.ctex"
+uid="uid://c3d4tl8dslca3"
+path="res://.godot/imported/frustration_5.png-664a7b5edff9d7363a552ac36b763e41.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/frustration_3.png"
-dest_files=["res://.godot/imported/frustration_3.png-0dc9fa3d174b1f2a996be6f1d8947dfe.ctex"]
+source_file="res://Assets/UI/frustration_5.png"
+dest_files=["res://.godot/imported/frustration_5.png-664a7b5edff9d7363a552ac36b763e41.ctex"]
 
 [params]
 

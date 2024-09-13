@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://qpseq5n48vbj"]
+[gd_scene load_steps=14 format=3 uid="uid://qpseq5n48vbj"]
 
 [ext_resource type="Texture2D" uid="uid://bq0r68ifa38rn" path="res://Assets/Objects/Store.png" id="1_iojbl"]
 [ext_resource type="PackedScene" uid="uid://ddue67srgxhwd" path="res://Scenes/Characters/Cashier.tscn" id="2_j8olq"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bsyxm5m1dnwxl" path="res://Scenes/Characters/Customer5.tscn" id="7_3ukba"]
 [ext_resource type="PackedScene" uid="uid://dm0qfuj7ior24" path="res://Scenes/Lungs.tscn" id="8_hoh6h"]
 [ext_resource type="Script" path="res://Scripts/CustomerSpawner.gd" id="9_jedks"]
+[ext_resource type="PackedScene" uid="uid://c6qh1ey5xwyrl" path="res://Scenes/scanner.tscn" id="10_hrdcb"]
+[ext_resource type="PackedScene" uid="uid://cltq38ult5tai" path="res://Scenes/frustration_UI.tscn" id="11_ymo6u"]
 
 [sub_resource type="Curve2D" id="Curve2D_vsdj7"]
 _data = {
@@ -45,3 +47,9 @@ next_path = NodePath("../CustomerPathExit")
 curve = SubResource("Curve2D_5insb")
 script = ExtResource("9_jedks")
 is_exit = true
+
+[node name="Scanner" parent="." instance=ExtResource("10_hrdcb")]
+position = Vector2(962, 581)
+
+[node name="Frustration_UI" parent="." instance=ExtResource("11_ymo6u")]
+position = Vector2(542, 954)

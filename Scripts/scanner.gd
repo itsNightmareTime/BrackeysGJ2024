@@ -9,7 +9,8 @@ enum frustration_level {
 }
 
 @onready var key_scene = preload("res://Scenes/key.tscn")
-@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var scan_sound: AudioStreamPlayer2D = $scan_sound
+@onready var cash_out_sound: AudioStreamPlayer2D = $cash_out_sound
 
 const key_path: String = "res://Assets/Keys/"
 const key_extension: String = ".png"
@@ -32,7 +33,7 @@ var key_start_y: float = -4.0
 var key_start_x: float = 1000
 
 # current state of the cart variables
-var current_frustration = frustration_level.five
+var current_frustration = frustration_level.one
 var current_key_map = level_one_key_map
 var current_cart: Array[Item_Key]
 var current_cart_size: int
@@ -66,14 +67,16 @@ func _process(delta: float) -> void:
 			current_cart[current_key_num].set_alpha_active_key()
 			if Input.is_physical_key_pressed(current_key_identity) and input_available:
 				current_cart[current_key_num].set_alpha_key_in_queue()
-				audio_stream_player_2d.play()
+				scan_sound.play()
 				move_cart_by_one_key(current_cart)
 				total_items_scanned += 1
 				current_key_num += 1
 				input_available = false
 				input_timer.start()
 		# frees the keys from queue and sends them left to the KeyDeleter
+		# This is where to signal that the customer is helped and leaving
 		else:
+			cash_out_sound.play()
 			in_queue = false
 			move_or_stop_cart(current_cart, true)
 			

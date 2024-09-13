@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bikvmftytum20"
-path="res://.godot/imported/Left_Lung.png-fa7a3f5a494e1fef63634154f85b99ff.ctex"
+uid="uid://otl3rjxe8cbc"
+path="res://.godot/imported/Right_Lung.png-63c1a44ff46a21f7ffab8a2d7828d769.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Objects/Lungs/Left_Lung.png"
-dest_files=["res://.godot/imported/Left_Lung.png-fa7a3f5a494e1fef63634154f85b99ff.ctex"]
+source_file="res://Assets/UI/Lungs/Right_Lung.png"
+dest_files=["res://.godot/imported/Right_Lung.png-63c1a44ff46a21f7ffab8a2d7828d769.ctex"]
 
 [params]
 

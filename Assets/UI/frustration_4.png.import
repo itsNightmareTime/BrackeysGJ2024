@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8uc4cilkldnj"
-path="res://.godot/imported/Trachea.png-dd48a194c5a86205d77124c093ec654e.ctex"
+uid="uid://b7rf652l2tmbn"
+path="res://.godot/imported/frustration_4.png-91d2abc9de70354d67929fd6d31a4d54.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Objects/Lungs/Trachea.png"
-dest_files=["res://.godot/imported/Trachea.png-dd48a194c5a86205d77124c093ec654e.ctex"]
+source_file="res://Assets/UI/frustration_4.png"
+dest_files=["res://.godot/imported/frustration_4.png-91d2abc9de70354d67929fd6d31a4d54.ctex"]
 
 [params]
 

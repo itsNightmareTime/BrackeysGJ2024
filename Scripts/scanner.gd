@@ -15,17 +15,16 @@ enum frustration_level {
 const key_path: String = "res://Assets/Keys/"
 const key_extension: String = ".png"
 const key_blank_path: String = key_path + "Blank" + key_extension
-const level_one_key_map: Array[String] = ["W", "A", "S", "D", "Blank"]
-const level_two_key_map: Array[String] = ["W", "A", "S", "D", "Q", "E", "F", "R", "Blank", "Blank", "Blank"]
-const level_three_key_map: Array[String] = ["W", "A", "S", "D", "Q", "E", "F", "R", "Z", "X","C", "V", "Blank", "Blank", "Blank", "Blank", "Blank", "Blank", "Blank"]
+const level_one_key_map: Array[String] = ["W", "A", "S", "D", "W", "A", "S", "D", "Blank"]
+const level_two_key_map: Array[String] = ["W", "A", "S", "D", "Q", "E", "F", "R", "Blank", "Blank"]
+const level_three_key_map: Array[String] = ["W", "A", "S", "D", "Q", "E", "F", "R", "Z", "X","C", "V", "Blank", "Blank", "Blank", "Blank", "Blank"]
 const level_four_key_map: Array[String] = ["W", "A", "S", "D", "Q", "E", "F", "R", "Z", "X","C", "V", "Blank", "Blank", "Blank", "Blank", "Blank", "Blank", "Blank", 
-"Blank", "Blank", "Blank", "Blank", "Blank", "Blank", "Blank", "Blank", "Blank", "Blank", "Blank", "Blank", "Blank", "Blank", "T", "G", "B", "Y", "H", "N", "1", 
+"Blank", "Blank", "Blank", "Blank", "Blank", "Blank", "T", "G", "B", "Y", "H", "N", "1", 
 "2", "3", "4", "5", "6"]
 const level_five_key_map: Array[String] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "Blank",
 "Blank", "Blank", "Blank", "Blank","Blank", "Blank", "Blank", "Blank", "Blank", "Blank", "Blank", "Blank", "Blank", 
 "Blank", "Blank", "Blank", "Blank", "Blank", "Blank", "Blank", "Blank", "Blank", "Blank", "Blank", "Blank", "Blank", 
-"Blank", "Blank", "Blank", "Blank", "Blank", "Blank", "Blank", "Blank", "Blank", "Blank", "N", "O", "P", "Q", "R", "S", 
-"T", "U", "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+"N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
 # distance for where to spawn keys and how far apart they need to be from each other
 var x_distance_between_keys: float = 100.0
@@ -41,9 +40,11 @@ var current_key_num: int = 0
 var total_items_scanned: int = 0
 var in_queue: bool = false
 
+signal cart_empty
+
 # Input timer variables
 var input_timer: Timer = Timer.new()
-var input_timer_wait_time: float = 0.05
+var input_timer_wait_time: float = 0.20
 var input_available: bool = true
 var randomGen = RandomNumberGenerator.new()
 
@@ -56,7 +57,7 @@ func _ready() -> void:
 	add_child(input_timer)
 	
 	#cart testing
-	current_cart = generate_shopping_cart()
+	#current_cart = generate_shopping_cart()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if in_queue:
@@ -79,6 +80,7 @@ func _process(delta: float) -> void:
 			cash_out_sound.play()
 			in_queue = false
 			move_or_stop_cart(current_cart, true)
+			cart_empty.emit()
 			
 # change the current key_map based on the current frustration level
 func update_frustration_level() -> void:
@@ -96,13 +98,18 @@ func update_frustration_level() -> void:
 		_:
 			print("Error: frustration level incorrect")
 	
-func set_frustration_level(level : int) -> void:
-	if level < 1:
-		current_frustration = 1
-	elif level > 5:
-		current_frustration = 5
-	else:
-		current_frustration = level
+func set_frustration_level(frustration : float) -> void:
+	if frustration < 20:
+		current_frustration = frustration_level.one
+	elif frustration < 40:
+		current_frustration = frustration_level.two
+	elif frustration < 60:
+		current_frustration = frustration_level.three
+	elif frustration < 80:
+		current_frustration = frustration_level.four
+	elif frustration <= 100:
+		current_frustration = frustration_level.five
+	update_frustration_level()
 
 # creates and returns a Key. Takes in the Char key name
 # the key_name is differenty from identity because of blank keys
@@ -138,15 +145,16 @@ func generate_rand_key() -> Item_Key:
 func generate_shopping_cart() -> Array[Item_Key]:
 	update_frustration_level()
 	randomGen.randomize()
-	var num_items: int = randomGen.randi_range(1, 4)
+	var num_items: int = randomGen.randi_range(2, 4)
 	randomGen.randomize()
-	var frustration_increase: int = randomGen.randi_range(0, current_frustration)
+	var frustration_increase: int = randomGen.randi_range(1, current_frustration)
 	current_cart_size = num_items + frustration_increase
 	var new_cart: Array[Item_Key]
 	for i in range(current_cart_size):
 		var new_key: Item_Key = generate_rand_key()
 		new_cart.append(new_key)
 	current_key_num = 0
+	current_cart = new_cart
 	put_cart_in_queue(new_cart)
 	return new_cart
 	

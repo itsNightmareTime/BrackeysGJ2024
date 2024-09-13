@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://qpseq5n48vbj"]
+[gd_scene load_steps=16 format=3 uid="uid://qpseq5n48vbj"]
 
+[ext_resource type="Script" path="res://Scenes/Game_Manager.gd" id="1_3cfg5"]
 [ext_resource type="Texture2D" uid="uid://bq0r68ifa38rn" path="res://Assets/Objects/Store.png" id="1_iojbl"]
 [ext_resource type="PackedScene" uid="uid://ddue67srgxhwd" path="res://Scenes/Characters/Cashier.tscn" id="2_j8olq"]
 [ext_resource type="PackedScene" uid="uid://m3ebpcl7nk5k" path="res://Scenes/Characters/Customer1.tscn" id="3_ta2x0"]
@@ -11,6 +12,7 @@
 [ext_resource type="Script" path="res://Scripts/CustomerSpawner.gd" id="9_jedks"]
 [ext_resource type="PackedScene" uid="uid://c6qh1ey5xwyrl" path="res://Scenes/scanner.tscn" id="10_hrdcb"]
 [ext_resource type="PackedScene" uid="uid://cltq38ult5tai" path="res://Scenes/frustration_UI.tscn" id="11_ymo6u"]
+[ext_resource type="PackedScene" uid="uid://cb8s53an2ypm7" path="res://Scenes/clock.tscn" id="13_0or76"]
 
 [sub_resource type="Curve2D" id="Curve2D_vsdj7"]
 _data = {
@@ -24,9 +26,10 @@ _data = {
 }
 point_count = 3
 
-[node name="Node2D" type="Node2D"]
+[node name="GameManager" type="Node2D"]
+script = ExtResource("1_3cfg5")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Store" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
 texture = ExtResource("1_iojbl")
 
@@ -34,7 +37,7 @@ texture = ExtResource("1_iojbl")
 position = Vector2(1557, 280)
 
 [node name="Lungs" parent="." instance=ExtResource("8_hoh6h")]
-position = Vector2(1450, 929)
+position = Vector2(1374, 900)
 
 [node name="CustomerPathLineToRegister" type="Path2D" parent="." node_paths=PackedStringArray("next_path")]
 curve = SubResource("Curve2D_vsdj7")
@@ -53,3 +56,11 @@ position = Vector2(962, 581)
 
 [node name="Frustration_UI" parent="." instance=ExtResource("11_ymo6u")]
 position = Vector2(542, 954)
+
+[node name="Clock" parent="." instance=ExtResource("13_0or76")]
+position = Vector2(9, -15)
+
+[connection signal="bad_breathing" from="Lungs" to="." method="_on_lungs_bad_breathing"]
+[connection signal="hyperventilating" from="Lungs" to="." method="_on_lungs_hyperventilating"]
+[connection signal="cart_empty" from="Scanner" to="." method="_on_scanner_cart_empty"]
+[connection signal="one_second" from="Clock" to="." method="_on_clock_one_second"]

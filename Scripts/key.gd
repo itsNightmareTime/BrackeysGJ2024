@@ -30,7 +30,7 @@ func set_key_type(filename : String, identity : String) -> void:
 
 func create_blank_reveal_timer() -> void:
 	randomGen.randomize()
-	blank_timer.wait_time = randomGen.randf_range(4.0, 12.0)
+	blank_timer.wait_time = randomGen.randf_range(3.0, 8.0)
 	blank_timer.one_shot = true
 	blank_timer.connect("timeout", Callable(self, "_on_Blank_Timer_Timeout"))
 	add_child(blank_timer)

@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://dliychbsqf82j" path="res://Assets/Sounds/CashOutSound.mp3" id="5_6cf3h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ksd41"]
-size = Vector2(54.5454, 128.571)
+size = Vector2(63.6363, 128.571)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tkn7l"]
 size = Vector2(198, 291)
@@ -26,7 +26,7 @@ texture = ExtResource("3_kyqs5")
 [node name="Area2D" type="Area2D" parent="ActiveKeyUi"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActiveKeyUi/Area2D"]
-position = Vector2(-100, 5.71429)
+position = Vector2(-95.4546, 5.71429)
 shape = SubResource("RectangleShape2D_ksd41")
 
 [node name="KeyDeleter" type="Area2D" parent="."]

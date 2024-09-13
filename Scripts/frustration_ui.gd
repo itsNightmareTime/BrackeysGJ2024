@@ -13,7 +13,7 @@ var face_frames: Array = [0, 1, 2, 3, 4]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	face.pause()
-	update_frustration(100)
+	update_frustration(0)
 	
 func set_state(frustration: int, face_frame: int, is_anger_visible: bool) -> void:
 	current_frustration = frustration

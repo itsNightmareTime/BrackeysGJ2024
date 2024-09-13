@@ -172,8 +172,73 @@ z_index = -1
 position = Vector2(855, 832)
 rotation = 0.165806
 
-[node name="text_bubble" parent="." instance=ExtResource("15_llfot")]
-position = Vector2(443, 301)
+[node name="text_bubbles" type="Node" parent="."]
+
+[node name="text_bubble" parent="text_bubbles" instance=ExtResource("15_llfot")]
+position = Vector2(333, 945)
+
+[node name="text_bubble2" parent="text_bubbles" instance=ExtResource("15_llfot")]
+position = Vector2(356, 863)
+
+[node name="text_bubble3" parent="text_bubbles" instance=ExtResource("15_llfot")]
+position = Vector2(433, 767)
+
+[node name="text_bubble4" parent="text_bubbles" instance=ExtResource("15_llfot")]
+position = Vector2(498, 635)
+
+[node name="text_bubble5" parent="text_bubbles" instance=ExtResource("15_llfot")]
+position = Vector2(474, 532)
+
+[node name="text_bubble6" parent="text_bubbles" instance=ExtResource("15_llfot")]
+position = Vector2(471, 445)
+
+[node name="text_bubble7" parent="text_bubbles" instance=ExtResource("15_llfot")]
+position = Vector2(459, 347)
+
+[node name="text_bubble8" parent="text_bubbles" instance=ExtResource("15_llfot")]
+position = Vector2(587, 213)
+
+[node name="text_bubble9" parent="text_bubbles" instance=ExtResource("15_llfot")]
+position = Vector2(747, 255)
+
+[node name="text_bubble10" parent="text_bubbles" instance=ExtResource("15_llfot")]
+position = Vector2(748, 366)
+
+[node name="text_bubble11" parent="text_bubbles" instance=ExtResource("15_llfot")]
+position = Vector2(735, 489)
+
+[node name="text_bubble12" parent="text_bubbles" instance=ExtResource("15_llfot")]
+position = Vector2(730, 650)
+
+[node name="text_bubble13" parent="text_bubbles" instance=ExtResource("15_llfot")]
+position = Vector2(744, 739)
+
+[node name="text_bubble14" parent="text_bubbles" instance=ExtResource("15_llfot")]
+position = Vector2(833, 762)
+
+[node name="text_bubble15" parent="text_bubbles" instance=ExtResource("15_llfot")]
+position = Vector2(961, 798)
+
+[node name="text_bubble16" parent="text_bubbles" instance=ExtResource("15_llfot")]
+position = Vector2(1008, 715)
+
+[node name="text_bubble17" parent="text_bubbles" instance=ExtResource("15_llfot")]
+position = Vector2(1016, 616)
+
+[node name="text_bubble18" parent="text_bubbles" instance=ExtResource("15_llfot")]
+position = Vector2(987, 465)
+
+[node name="text_bubble19" parent="text_bubbles" instance=ExtResource("15_llfot")]
+position = Vector2(1004, 357)
+
+[node name="text_bubble20" parent="text_bubbles" instance=ExtResource("15_llfot")]
+position = Vector2(976, 248)
+
+[node name="text_bubble21" parent="text_bubbles" instance=ExtResource("15_llfot")]
+position = Vector2(1074, 248)
+
+[node name="text_bubble22" parent="text_bubbles" instance=ExtResource("15_llfot")]
+position = Vector2(336, 1057)
 
 [connection signal="bad_breathing" from="Lungs" to="." method="_on_lungs_bad_breathing"]
 [connection signal="hyperventilating" from="Lungs" to="." method="_on_lungs_hyperventilating"]

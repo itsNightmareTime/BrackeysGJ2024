@@ -44,7 +44,7 @@ func _ready() -> void:
 		shader_highlighted()
 
 func _process(delta: float) -> void:
-	print(current_breath_speed)
+	# print(current_breath_speed)
 	
 	# If the player keeps holding the mouse button after a failed breath this stops them from breathing in again
 	if not let_go_of_breath and not can_breath_in:

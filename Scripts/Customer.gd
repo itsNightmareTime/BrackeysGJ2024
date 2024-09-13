@@ -1,15 +1,19 @@
 extends PathFollow2D
 class_name Customer
 
-@export var move_speed: int = 200:
-	set(value):
-		move_speed = value
+# a signal to emit when at the end of the path
+signal at_end
 
-func _ready():
-	loop = false
+@export var move_speed: int = 200
+var at_end_of_path: bool = false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# Progress through the path until the end. If it is the exit deletes the customer if not emits I'm at the end.
+# Will have to add a signal for at register to cause the scanning mini game to start?
 func _process(delta: float):
 	progress = progress + (move_speed * delta)
-	if progress_ratio == 1:
-		free()
+	if progress_ratio == 1 and not at_end_of_path:
+		at_end_of_path = true
+		if not get_parent().is_exit:
+			var signal_emitted = emit_signal("at_end", self)
+		else:
+			free()

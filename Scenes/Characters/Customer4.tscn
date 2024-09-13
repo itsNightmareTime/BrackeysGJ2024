@@ -96,6 +96,7 @@ _data = {
 }
 
 [node name="Customer1" type="PathFollow2D"]
+loop = false
 script = ExtResource("1_ydvyo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

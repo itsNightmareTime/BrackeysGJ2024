@@ -9,15 +9,27 @@
 
 [sub_resource type="Curve2D" id="Curve2D_5fngr"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -176, 196, 0, 0, 0, 0, 1783, 197, 0, 0, 0, 0, 1781, 713, 0, 0, 0, 0, -176, 711)
+"points": PackedVector2Array(0, 0, 0, 0, 203, 1212, 0, 0, 0, 0, 201, 269, 0, 0, 0, 0, 659, 267, 0, 0, 0, 0, 643, 882, 0, 0, 0, 0, 1117.01, 882.047, 0, 0, 0, 0, 1121.5, 720.412, 0, 0, 0, 0, 1117.01, 578.982, 0, 0, 0, 0, 1108, 368, 0, 0, 0, 0, 1110, 251, 0, 0, 0, 0, 1692, 233, 0, 0, 0, 0, 1692, 1304)
 }
-point_count = 4
+point_count = 11
 
 [node name="PathingTester" type="Node2D"]
 
 [node name="CustomerSpawner" type="Node2D" parent="."]
 script = ExtResource("1_68kfh")
-customer_variants = [ExtResource("2_fp0xr"), ExtResource("3_cuhtw"), ExtResource("4_rbm6x"), ExtResource("5_tyt15"), ExtResource("6_rglxx")]
+customer_variants = Array[PackedScene]([ExtResource("2_fp0xr"), ExtResource("3_cuhtw"), ExtResource("4_rbm6x"), ExtResource("5_tyt15"), ExtResource("6_rglxx")])
+
+[node name="SpawnTimer" type="Timer" parent="CustomerSpawner"]
 
 [node name="CustomerPath" type="Path2D" parent="CustomerSpawner"]
+position = Vector2(-142, -33)
 curve = SubResource("Curve2D_5fngr")
+
+[node name="Customer1" parent="CustomerSpawner/CustomerPath" instance=ExtResource("2_fp0xr")]
+position = Vector2(203, 1212)
+rotation = -1.57292
+
+[node name="Customer2" parent="CustomerSpawner/CustomerPath" instance=ExtResource("2_fp0xr")]
+position = Vector2(203, 1212)
+rotation = -1.57292
+move_speed = 300

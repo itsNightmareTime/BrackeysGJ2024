@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfyfp0o5mdwf7"]
+
+[ext_resource type="Texture2D" uid="uid://cqh7kw82rsf7m" path="res://Assets/UI/text_bubble.png" id="1_cjgd5"]
+[ext_resource type="Script" path="res://Scripts/text_bubble.gd" id="1_ew4vo"]
+
+[sub_resource type="Animation" id="Animation_8wjq0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_d2vhi"]
+resource_name = "pop_out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.03333, 1.96667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7p0rl"]
+_data = {
+"RESET": SubResource("Animation_8wjq0"),
+"pop_out": SubResource("Animation_d2vhi")
+}
+
+[node name="text_bubble" type="Node2D"]
+visible = false
+script = ExtResource("1_ew4vo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cjgd5")
+
+[node name="text" type="RichTextLabel" parent="Sprite2D"]
+offset_left = -73.0
+offset_top = -25.0
+offset_right = 72.0
+offset_bottom = 16.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 12
+text = "I don't see a barcode on this, is it free?"
+scroll_active = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7p0rl")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

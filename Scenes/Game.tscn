@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://qpseq5n48vbj"]
+[gd_scene load_steps=18 format=3 uid="uid://qpseq5n48vbj"]
 
 [ext_resource type="Script" path="res://Scenes/Game_Manager.gd" id="1_3cfg5"]
 [ext_resource type="Texture2D" uid="uid://bq0r68ifa38rn" path="res://Assets/Objects/Store.png" id="1_iojbl"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cltq38ult5tai" path="res://Scenes/frustration_UI.tscn" id="11_ymo6u"]
 [ext_resource type="PackedScene" uid="uid://cb8s53an2ypm7" path="res://Scenes/clock.tscn" id="13_0or76"]
 [ext_resource type="PackedScene" uid="uid://b0xhpyak8gxg4" path="res://Scenes/customers_helped_UI.tscn" id="14_51e2c"]
+[ext_resource type="PackedScene" uid="uid://dfyfp0o5mdwf7" path="res://Scenes/text_bubble.tscn" id="15_llfot"]
 
 [sub_resource type="Curve2D" id="Curve2D_vsdj7"]
 _data = {
@@ -71,101 +72,84 @@ position = Vector2(216, 38)
 
 [node name="Customer1" parent="Static_customers/static_group_1" instance=ExtResource("3_ta2x0")]
 z_index = -1
-position = Vector2(377, 603)
-
-[node name="Customer4" parent="Static_customers/static_group_1" instance=ExtResource("3_ta2x0")]
-z_index = -1
-position = Vector2(911, 660)
-
-[node name="Customer5" parent="Static_customers/static_group_1" instance=ExtResource("3_ta2x0")]
-z_index = -1
-position = Vector2(255, 996)
+position = Vector2(645, 312)
+rotation = -3.14159
 
 [node name="Customer2" parent="Static_customers/static_group_1" instance=ExtResource("3_ta2x0")]
 z_index = -1
-position = Vector2(642, 791)
+position = Vector2(652, 806)
 rotation = 1.5708
 
 [node name="Customer3" parent="Static_customers/static_group_1" instance=ExtResource("3_ta2x0")]
 z_index = -1
-position = Vector2(650, 312)
-rotation = 3.14159
+position = Vector2(913, 661)
+
+[node name="Customer4" parent="Static_customers/static_group_1" instance=ExtResource("3_ta2x0")]
+z_index = -1
+position = Vector2(376, 589)
 
 [node name="static_group_2" type="Node" parent="Static_customers"]
 
 [node name="Customer2" parent="Static_customers/static_group_2" instance=ExtResource("4_b87fn")]
 z_index = -1
-position = Vector2(769, 809)
+position = Vector2(376, 386)
 
 [node name="Customer3" parent="Static_customers/static_group_2" instance=ExtResource("4_b87fn")]
 z_index = -1
-position = Vector2(638, 425)
+position = Vector2(647, 418)
 rotation = 1.5708
 
 [node name="Customer4" parent="Static_customers/static_group_2" instance=ExtResource("4_b87fn")]
 z_index = -1
-position = Vector2(909, 772)
+position = Vector2(752, 813)
 rotation = 4.71239
 
 [node name="Customer5" parent="Static_customers/static_group_2" instance=ExtResource("4_b87fn")]
 z_index = -1
-position = Vector2(909, 772)
-rotation = 4.71239
-
-[node name="Customer7" parent="Static_customers/static_group_2" instance=ExtResource("4_b87fn")]
-z_index = -1
-position = Vector2(899, 303)
-rotation = 1.5708
+position = Vector2(914, 761)
 
 [node name="Customer6" parent="Static_customers/static_group_2" instance=ExtResource("4_b87fn")]
 z_index = -1
-position = Vector2(380, 375)
-rotation = 4.71239
+position = Vector2(903, 299)
+rotation = 1.5708
 
 [node name="static_group_3" type="Node" parent="Static_customers"]
 
-[node name="Customer3" parent="Static_customers/static_group_3" instance=ExtResource("5_wcp3x")]
-z_index = -1
-position = Vector2(377, 483)
-
 [node name="Customer4" parent="Static_customers/static_group_3" instance=ExtResource("5_wcp3x")]
-z_index = -1
-position = Vector2(517, 295)
-rotation = 1.5708
+position = Vector2(380, 489)
 
-[node name="Customer5" parent="Static_customers/static_group_3" instance=ExtResource("5_wcp3x")]
-z_index = -1
-position = Vector2(649, 539)
+[node name="Customer8" parent="Static_customers/static_group_3" instance=ExtResource("5_wcp3x")]
+position = Vector2(645, 556)
 rotation = 3.14159
 
-[node name="Customer6" parent="Static_customers/static_group_3" instance=ExtResource("5_wcp3x")]
-z_index = -1
-position = Vector2(911, 526)
+[node name="Customer9" parent="Static_customers/static_group_3" instance=ExtResource("5_wcp3x")]
+position = Vector2(898, 514)
 
-[node name="Customer7" parent="Static_customers/static_group_3" instance=ExtResource("5_wcp3x")]
-z_index = -1
-position = Vector2(334, 796)
-rotation = 0.909317
+[node name="Customer5" parent="Static_customers/static_group_3" instance=ExtResource("5_wcp3x")]
+position = Vector2(252, 994)
+
+[node name="Customer6" parent="Static_customers/static_group_3" instance=ExtResource("5_wcp3x")]
+position = Vector2(342, 809)
+rotation = 1.23918
 
 [node name="static_group_4" type="Node" parent="Static_customers"]
 
 [node name="Customer1" parent="Static_customers/static_group_4" instance=ExtResource("6_ar3ca")]
 z_index = -1
-position = Vector2(903, 408)
+position = Vector2(383, 696)
 
 [node name="Customer2" parent="Static_customers/static_group_4" instance=ExtResource("6_ar3ca")]
 z_index = -1
-position = Vector2(385, 279)
-rotation = 1.5708
-
-[node name="Customer4" parent="Static_customers/static_group_4" instance=ExtResource("6_ar3ca")]
-z_index = -1
-position = Vector2(255, 1107)
+position = Vector2(474, 280)
 rotation = 1.5708
 
 [node name="Customer3" parent="Static_customers/static_group_4" instance=ExtResource("6_ar3ca")]
 z_index = -1
-position = Vector2(390, 702)
+position = Vector2(908, 410)
+
+[node name="Customer4" parent="Static_customers/static_group_4" instance=ExtResource("6_ar3ca")]
+z_index = -1
+position = Vector2(243, 1119)
 
 [node name="static_group_5" type="Node" parent="Static_customers"]
 
@@ -187,6 +171,9 @@ rotation = 1.5708
 z_index = -1
 position = Vector2(855, 832)
 rotation = 0.165806
+
+[node name="text_bubble" parent="." instance=ExtResource("15_llfot")]
+position = Vector2(443, 301)
 
 [connection signal="bad_breathing" from="Lungs" to="." method="_on_lungs_bad_breathing"]
 [connection signal="hyperventilating" from="Lungs" to="." method="_on_lungs_hyperventilating"]

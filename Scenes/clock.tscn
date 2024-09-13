@@ -4,6 +4,9 @@
 [ext_resource type="Theme" uid="uid://c0bs04tbhotki" path="res://MainTheme.tres" id="2_lxet0"]
 
 [sub_resource type="FontFile" id="FontFile_3t06t"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0

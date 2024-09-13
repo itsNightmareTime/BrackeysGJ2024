@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3hmd0h6m3eei"]
+[gd_scene load_steps=12 format=3 uid="uid://qpseq5n48vbj"]
 
 [ext_resource type="Texture2D" uid="uid://bq0r68ifa38rn" path="res://Assets/Objects/Store.png" id="1_iojbl"]
 [ext_resource type="PackedScene" uid="uid://ddue67srgxhwd" path="res://Scenes/Characters/Cashier.tscn" id="2_j8olq"]
@@ -7,7 +7,20 @@
 [ext_resource type="PackedScene" uid="uid://both3knwlyfde" path="res://Scenes/Characters/Customer3.tscn" id="5_wcp3x"]
 [ext_resource type="PackedScene" uid="uid://b7irbiy1fbr4x" path="res://Scenes/Characters/Customer4.tscn" id="6_ar3ca"]
 [ext_resource type="PackedScene" uid="uid://bsyxm5m1dnwxl" path="res://Scenes/Characters/Customer5.tscn" id="7_3ukba"]
-[ext_resource type="PackedScene" uid="uid://dm0qfuj7ior24" path="res://Scenes/Lungs.tscn" id="8_hoh6h"]
+[ext_resource type="PackedScene" path="res://Scenes/Lungs.tscn" id="8_hoh6h"]
+[ext_resource type="Script" path="res://Scripts/CustomerSpawner.gd" id="9_jedks"]
+
+[sub_resource type="Curve2D" id="Curve2D_vsdj7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1030, 300, 0, 0, 0, 0, 1250, 300, 0, 0, 0, 0, 1250, 520, 0, 0, 0, 0, 1550, 520)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_5insb"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1550, 520, 0, 0, 0, 0, 1650, 520, 0, 0, 0, 0, 1650, 1150)
+}
+point_count = 3
 
 [node name="Node2D" type="Node2D"]
 
@@ -18,20 +31,17 @@ texture = ExtResource("1_iojbl")
 [node name="Cashier" parent="." instance=ExtResource("2_j8olq")]
 position = Vector2(1557, 280)
 
-[node name="Customer1" parent="." instance=ExtResource("3_ta2x0")]
-position = Vector2(388, 543)
-
-[node name="Customer2" parent="." instance=ExtResource("4_b87fn")]
-position = Vector2(647, 453)
-
-[node name="Customer3" parent="." instance=ExtResource("5_wcp3x")]
-position = Vector2(640, 668)
-
-[node name="Customer4" parent="." instance=ExtResource("6_ar3ca")]
-position = Vector2(1236, 473)
-
-[node name="Customer5" parent="." instance=ExtResource("7_3ukba")]
-position = Vector2(915, 591)
-
 [node name="Lungs" parent="." instance=ExtResource("8_hoh6h")]
 position = Vector2(1450, 929)
+
+[node name="CustomerPathLineToRegister" type="Path2D" parent="." node_paths=PackedStringArray("next_path")]
+curve = SubResource("Curve2D_vsdj7")
+script = ExtResource("9_jedks")
+is_spawner = true
+customer_variants = Array[PackedScene]([ExtResource("3_ta2x0"), ExtResource("4_b87fn"), ExtResource("5_wcp3x"), ExtResource("6_ar3ca"), ExtResource("7_3ukba")])
+next_path = NodePath("../CustomerPathExit")
+
+[node name="CustomerPathExit" type="Path2D" parent="."]
+curve = SubResource("Curve2D_5insb")
+script = ExtResource("9_jedks")
+is_exit = true

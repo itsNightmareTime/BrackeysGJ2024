@@ -16,11 +16,12 @@ var current_customer = null
 func _ready():
 	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# Spawns a new customer if they are in the next path and out of the way
 func _process(_delta: float):
 	if not current_customer and is_spawner:
 		spawn_new_customer()
 
+# Create a new customer a connect to the at_end signal.
 func spawn_new_customer():
 	var new_customer = customer_variants.pick_random().instantiate()
 	new_customer.move_speed = 250
@@ -28,7 +29,8 @@ func spawn_new_customer():
 	current_customer.at_end.connect(move_customer_to_next_path)
 	add_child(new_customer)
 
-# Move the customer to the next path is specified and reset their progress and stop listening for their at end signal
+# Move the customer to the next path is specified and reset their progress 
+# and stop listening for their at end signal
 func move_customer_to_next_path(node: Node2D):
 	print("received signal at_end")
 	node.reparent(next_path)

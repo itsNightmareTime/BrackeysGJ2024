@@ -6,6 +6,7 @@ extends Node2D
 @onready var customer_path_line_to_register: Path2D = $CustomerPathLineToRegister
 @onready var customer_path_exit: Path2D = $CustomerPathExit
 @onready var clock: Node2D = $Clock
+@onready var customers_helped_ui: Node2D = $Customers_helped_UI
 
 @export var max_frustration: float = 100
 @export var min_frustration: float = 1
@@ -18,6 +19,7 @@ var current_frustration: float = min_frustration
 var current_lung_speed_increment: float = current_frustration / lung_speed_increment_divisor
 var hyperventilation_increment_timer: Timer = Timer.new()
 var can_add_hyper_increment: bool = true
+var customers_helped: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -54,7 +56,9 @@ func update_scanner() -> void:
 
 # Emitted from the cart once the last item has been scanned
 func _on_scanner_cart_empty() -> void:
+	customers_helped += 1
 	scanner.generate_shopping_cart()
+	customers_helped_ui.update_text(str(customers_helped))
 
 # Emiited when the player breathes poorly
 func _on_lungs_bad_breathing() -> void:

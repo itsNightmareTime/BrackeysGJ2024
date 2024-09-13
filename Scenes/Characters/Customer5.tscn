@@ -96,6 +96,7 @@ _data = {
 }
 
 [node name="Customer1" type="PathFollow2D"]
+z_index = -2
 loop = false
 script = ExtResource("1_8xjil")
 

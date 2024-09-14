@@ -11,9 +11,7 @@ func _ready() -> void:
 	timer.start()
 
 func update_label() -> void:
-	var min: int = int(time_elapsed / 60.0)
-	var sec: int = time_elapsed - min * 60
-	rich_text_label.text = '%02d:%02d' % [min, sec]
+	rich_text_label.text = str(time_elapsed)
 
 func _on_timer_timeout() -> void:
 	time_elapsed += 1

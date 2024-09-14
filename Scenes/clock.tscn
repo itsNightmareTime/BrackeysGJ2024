@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cb8s53an2ypm7"]
+[gd_scene load_steps=5 format=3 uid="uid://cb8s53an2ypm7"]
 
 [ext_resource type="Script" path="res://Scripts/clock.gd" id="1_rliq4"]
 [ext_resource type="Theme" uid="uid://c0bs04tbhotki" path="res://MainTheme.tres" id="2_lxet0"]
+[ext_resource type="Texture2D" uid="uid://d3tmfk6aoyfk" path="res://Assets/UI/Clock_UI.png" id="3_sskwh"]
 
 [sub_resource type="FontFile" id="FontFile_3t06t"]
 subpixel_positioning = 0
@@ -69,17 +70,23 @@ offset_bottom = 104.0
 theme = ExtResource("2_lxet0")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control"]
-modulate = Color(1, 0.14902, 0.239216, 1)
 layout_mode = 0
-offset_right = 160.0
-offset_bottom = 89.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 184.0
+offset_bottom = 90.0
 theme = ExtResource("2_lxet0")
 theme_override_fonts/normal_font = SubResource("FontFile_3t06t")
 theme_override_font_sizes/normal_font_size = 65
-text = "00:00
+text = "00
 "
 
 [node name="Timer" type="Timer" parent="Control"]
 autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-74, 49)
+scale = Vector2(2, 2)
+texture = ExtResource("3_sskwh")
 
 [connection signal="timeout" from="Control/Timer" to="." method="_on_timer_timeout"]

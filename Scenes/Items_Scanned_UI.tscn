@@ -14,6 +14,6 @@ offset_left = 33.0
 offset_top = -20.0
 offset_right = 120.0
 offset_bottom = 25.0
-theme_override_colors/default_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
 text = "0"
 metadata/_edit_use_anchors_ = true

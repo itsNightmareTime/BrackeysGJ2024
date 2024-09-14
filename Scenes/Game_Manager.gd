@@ -10,11 +10,12 @@ extends Node2D
 @onready var final_text: Node2D = $Store/final_text
 @onready var cashier: Cashier = $Path2D/Cashier
 @onready var score_screen: Node2D = $score_screen
+@onready var items_scanned_ui: Node2D = $items_scanned_UI
 
 signal end_game
 
 @export var max_frustration: float = 100
-@export var min_frustration: float = 99
+@export var min_frustration: float = 1
 var current_frustration: float = min_frustration
 # used to convert the frustration to lung_speed values by dividing current_frustration by this
 @export var lung_speed_increment_divisor: float = 50000
@@ -65,6 +66,7 @@ func update_frustration_ui() -> void:
 func update_scanner() -> void:
 	scanner.set_frustration_level(current_frustration)
 	item_total = scanner.total_items_scanned
+	items_scanned_ui.update_text(str(item_total))
 
 # Emitted from the cart once the last item has been scanned
 func _on_scanner_cart_empty() -> void:

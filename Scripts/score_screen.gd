@@ -27,7 +27,7 @@ func set_score_board(seconds: int, items: int, customers: int) -> void:
 	customer_total.text = str(customers)
 	customer_multiply_value.text = str(customer_multiplier)
 	final_score = (seconds * clock_multiplier) + (items * item_multiplier) + (customers * customer_multiplier)
-	final_score_value.text = str(final_score)
+	final_score_value.text = str("%05d" % final_score)
 	
 	visible = true
 	outer_margin.visible = true

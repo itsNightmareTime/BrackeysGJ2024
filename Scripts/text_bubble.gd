@@ -63,7 +63,7 @@ func pop_out() -> void:
 	animation_player.play(animation_name)
 	visible = true
 	
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	animation_player.stop()
 	visible = false
 

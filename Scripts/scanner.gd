@@ -59,7 +59,7 @@ func _ready() -> void:
 	#cart testing
 	#current_cart = generate_shopping_cart()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if in_queue:
 		# checks for input as long as there are still in queue
 		if not current_key_num >= current_cart_size:
@@ -173,7 +173,7 @@ func move_cart_by_one_key(cart: Array[Item_Key]) -> void:
 		key.transform.origin.x -= x_distance_between_keys
 	
 # when an area_2d enters the active_key_UI
-func _on_area_2d_area_entered(area: Area2D) -> void:
+func _on_area_2d_area_entered(_area: Area2D) -> void:
 	if not in_queue:
 		move_or_stop_cart(current_cart, false)
 		in_queue = true

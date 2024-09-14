@@ -16,7 +16,7 @@ func _ready() -> void:
 	set_alpha_key_in_queue()
 	
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if can_move:
 		move_left()
 

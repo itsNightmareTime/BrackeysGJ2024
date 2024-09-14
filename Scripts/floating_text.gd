@@ -17,5 +17,5 @@ func set_and_start(text : String, color : String) -> void:
 	animation_player.play("float")
 
 
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	self.queue_free()

@@ -49,7 +49,7 @@ func _ready() -> void:
 		var glow_shader = glow_shader as ShaderMaterial
 		shader_highlighted()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	check_for_hyperventilation()
 	# If the player keeps holding the mouse button after a failed breath this stops them from breathing in again
 	if not let_go_of_breath and not can_breath_in:

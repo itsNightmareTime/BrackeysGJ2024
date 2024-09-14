@@ -23,8 +23,7 @@ func _process(_delta: float) -> void:
 func set_key_type(filename : String, identity : String) -> void:
 	if filename == blank_name:
 		create_blank_reveal_timer()
-	var image = Image.load_from_file(filename)
-	key.texture = ImageTexture.create_from_image(image)
+	key.texture = load(filename)
 	key_identity = identity
 
 func create_blank_reveal_timer() -> void:

@@ -46,7 +46,7 @@ func _ready() -> void:
 	animation_player.play(animation_names[current_breath_state])
 	
 	if glow_shader is ShaderMaterial:
-		var glow_shader = glow_shader as ShaderMaterial
+		#var glow_shader = glow_shader
 		shader_highlighted()
 
 func _process(_delta: float) -> void:

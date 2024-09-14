@@ -36,5 +36,5 @@ func update_frustration(frustration: int) -> void:
 		set_state(frustration, 4, true)
 		
 	
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+func _on_animation_player_animation_finished() -> void:
 	animation_player.play("blinking")

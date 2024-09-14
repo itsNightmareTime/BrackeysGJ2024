@@ -15,7 +15,7 @@ extends Node2D
 signal end_game
 
 @export var max_frustration: float = 100
-@export var min_frustration: float = 1
+@export var min_frustration: float = 79
 var current_frustration: float = min_frustration
 # used to convert the frustration to lung_speed values by dividing current_frustration by this
 @export var lung_speed_increment_divisor: float = 50000

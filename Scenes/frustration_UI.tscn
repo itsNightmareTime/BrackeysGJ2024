@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cltq38ult5tai"]
+[gd_scene load_steps=14 format=3 uid="uid://cltq38ult5tai"]
 
 [ext_resource type="Texture2D" uid="uid://csqsacolhbnnh" path="res://Assets/UI/frustration_1.png" id="1_ktkww"]
 [ext_resource type="Script" path="res://Scripts/frustration_ui.gd" id="1_q6xfr"]
@@ -33,6 +33,44 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_kjgrt"]
+resource_name = "blinking"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anger:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.733333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_nm7op"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anger:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cn3uw"]
+_data = {
+"RESET": SubResource("Animation_nm7op"),
+"blinking": SubResource("Animation_kjgrt")
+}
+
 [node name="Frustration_UI" type="Node2D"]
 script = ExtResource("1_q6xfr")
 
@@ -41,7 +79,6 @@ sprite_frames = SubResource("SpriteFrames_iow0i")
 frame_progress = 0.423305
 
 [node name="Anger" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(61, -64)
 texture = ExtResource("6_jytyl")
 
@@ -61,3 +98,11 @@ value = 50.0
 texture_under = ExtResource("8_mktem")
 texture_progress = ExtResource("9_ocg62")
 texture_progress_offset = Vector2(6, 5.85)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cn3uw")
+}
+speed_scale = 0.75
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

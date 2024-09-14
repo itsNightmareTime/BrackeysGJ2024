@@ -3,6 +3,7 @@ extends Node2D
 @onready var face: AnimatedSprite2D = $Face
 @onready var anger: Sprite2D = $Anger
 @onready var bar: TextureProgressBar = $Control/TextureProgressBar
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export var max_frustration: int = 100
 var current_frustration: int = 0
@@ -30,6 +31,10 @@ func update_frustration(frustration: int) -> void:
 		set_state(frustration, 2, false)
 	elif frustration < 80:
 		set_state(frustration, 3, true)
+		animation_player.play("blinking")
 	elif frustration <= 100:
 		set_state(frustration, 4, true)
+		
 	
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	animation_player.play("blinking")

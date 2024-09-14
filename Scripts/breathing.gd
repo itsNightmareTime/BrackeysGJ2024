@@ -134,7 +134,7 @@ func spawn_feedback_text(text : String, color : String) -> void:
 
 # signal occurs when an animation ends and then cycles the current animation to the next state and plays it
 # it will also change the logic on if a player can even attempt to breathe in again or not
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	if current_breath_state == breathingState.pause:
 		current_breath_state = breathingState.breathe_in
 	else:

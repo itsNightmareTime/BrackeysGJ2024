@@ -1,0 +1,92 @@
+[gd_scene load_steps=2 format=3 uid="uid://wd1xc8bae0hf"]
+
+[ext_resource type="Script" path="res://Scripts/Credits.gd" id="1_mv8ns"]
+
+[node name="Credits" type="Node2D"]
+script = ExtResource("1_mv8ns")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ButtonHolder" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/ButtonHolder"]
+layout_mode = 1
+offset_right = 30.0
+offset_bottom = 30.0
+
+[node name="Button" type="Button" parent="CanvasLayer/ButtonHolder/MarginContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="ScrollingText" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/ScrollingText"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Developers
+
+Harrison Armstrong
+Brian Bessler
+
+Assets
+
+Key Icons By Brett Post Script
+https://opengameart.org/content/pc-keyboard-mouse-and-touch-input-icons
+
+Sounds
+
+Cash Register Sound by SoundEffectsLibrary
+https://opengameart.org/content/pc-keyboard-mouse-and-touch-input-icons
+
+Repeatable Beep by magnuswaker
+ https://freesound.org/s/555061/ -- License: Creative Commons 0
+
+The Ghost of Shepard's Pie by GeoffteyBurch
+https://pixabay.com/music/modern-jazz-the-ghost-of-shepardx27s-pie-glbml-112816/
+
+
+Shaders
+Rainbow outline by @Farfalk and @ThePadDev, And Edit for @LURGX in 2022
+"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/ButtonHolder/MarginContainer/Button" to="." method="_on_button_pressed"]

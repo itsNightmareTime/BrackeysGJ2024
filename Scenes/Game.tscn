@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://qpseq5n48vbj"]
+[gd_scene load_steps=19 format=3 uid="uid://qpseq5n48vbj"]
 
 [ext_resource type="Script" path="res://Scenes/Game_Manager.gd" id="1_3cfg5"]
 [ext_resource type="Texture2D" uid="uid://bq0r68ifa38rn" path="res://Assets/Objects/Store.png" id="1_iojbl"]
@@ -10,11 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://bsyxm5m1dnwxl" path="res://Scenes/Characters/Customer5.tscn" id="7_3ukba"]
 [ext_resource type="PackedScene" uid="uid://dm0qfuj7ior24" path="res://Scenes/Lungs.tscn" id="8_hoh6h"]
 [ext_resource type="Script" path="res://Scripts/CustomerSpawner.gd" id="9_jedks"]
-[ext_resource type="PackedScene" path="res://Scenes/scanner.tscn" id="10_hrdcb"]
-[ext_resource type="PackedScene" path="res://Scenes/frustration_UI.tscn" id="11_ymo6u"]
-[ext_resource type="PackedScene" path="res://Scenes/clock.tscn" id="13_0or76"]
-[ext_resource type="PackedScene" path="res://Scenes/customers_helped_UI.tscn" id="14_51e2c"]
-[ext_resource type="PackedScene" uid="uid://s6na6usx5x7b" path="res://Scenes/text_bubble.tscn" id="15_llfot"]
+[ext_resource type="PackedScene" uid="uid://c6qh1ey5xwyrl" path="res://Scenes/scanner.tscn" id="10_hrdcb"]
+[ext_resource type="PackedScene" uid="uid://cltq38ult5tai" path="res://Scenes/frustration_UI.tscn" id="11_ymo6u"]
+[ext_resource type="PackedScene" uid="uid://cb8s53an2ypm7" path="res://Scenes/clock.tscn" id="13_0or76"]
+[ext_resource type="PackedScene" uid="uid://b0xhpyak8gxg4" path="res://Scenes/customers_helped_UI.tscn" id="14_51e2c"]
+[ext_resource type="PackedScene" uid="uid://dfyfp0o5mdwf7" path="res://Scenes/text_bubble.tscn" id="15_llfot"]
+[ext_resource type="PackedScene" uid="uid://q6s4ypjm4pu2" path="res://Scenes/final_text.tscn" id="16_4gts6"]
 
 [sub_resource type="Curve2D" id="Curve2D_vsdj7"]
 _data = {
@@ -239,6 +240,8 @@ position = Vector2(1074, 248)
 
 [node name="text_bubble22" parent="text_bubbles" instance=ExtResource("15_llfot")]
 position = Vector2(336, 1057)
+
+[node name="final_text" parent="." instance=ExtResource("16_4gts6")]
 
 [connection signal="bad_breathing" from="Lungs" to="." method="_on_lungs_bad_breathing"]
 [connection signal="hyperventilating" from="Lungs" to="." method="_on_lungs_hyperventilating"]

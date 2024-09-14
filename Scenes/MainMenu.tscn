@@ -89,9 +89,14 @@ layout_mode = 2
 theme = ExtResource("3_vihyn")
 text = "Start"
 
-[node name="Button" type="Button" parent="CanvasLayer/OuterMargin/MainCanvasItem/MenuPanel/MarginContainer/GridContainer"]
+[node name="CreditsButton" type="Button" parent="CanvasLayer/OuterMargin/MainCanvasItem/MenuPanel/MarginContainer/GridContainer"]
 layout_mode = 2
 text = "Credits
+"
+
+[node name="Controls" type="Button" parent="CanvasLayer/OuterMargin/MainCanvasItem/MenuPanel/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Controls
 "
 
 [node name="ExitButton" type="Button" parent="CanvasLayer/OuterMargin/MainCanvasItem/MenuPanel/MarginContainer/GridContainer"]
@@ -173,5 +178,6 @@ scale = Vector2(0.42, 0.42)
 texture = ExtResource("16_c5jy8")
 
 [connection signal="pressed" from="CanvasLayer/OuterMargin/MainCanvasItem/MenuPanel/MarginContainer/GridContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/OuterMargin/MainCanvasItem/MenuPanel/MarginContainer/GridContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/OuterMargin/MainCanvasItem/MenuPanel/MarginContainer/GridContainer/CreditsButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/OuterMargin/MainCanvasItem/MenuPanel/MarginContainer/GridContainer/Controls" to="." method="_on_controls_pressed"]
 [connection signal="pressed" from="CanvasLayer/OuterMargin/MainCanvasItem/MenuPanel/MarginContainer/GridContainer/ExitButton" to="." method="_on_exit_button_pressed"]

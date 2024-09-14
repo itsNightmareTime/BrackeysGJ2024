@@ -1,0 +1,137 @@
+[gd_scene load_steps=16 format=3 uid="uid://niftoni2jibj"]
+
+[ext_resource type="Texture2D" uid="uid://bq0r68ifa38rn" path="res://Assets/Objects/Store.png" id="1_tue2i"]
+[ext_resource type="Script" path="res://Scripts/controls_screen.gd" id="1_w3db8"]
+[ext_resource type="Texture2D" uid="uid://c8wnna2i5d21f" path="res://Assets/UI/cover.png" id="2_acbkm"]
+[ext_resource type="PackedScene" uid="uid://dm0qfuj7ior24" path="res://Scenes/Lungs.tscn" id="3_5h2ux"]
+[ext_resource type="Texture2D" uid="uid://c3d4tl8dslca3" path="res://Assets/UI/frustration_5.png" id="4_02d5s"]
+[ext_resource type="Texture2D" uid="uid://b7rf652l2tmbn" path="res://Assets/UI/frustration_4.png" id="5_qla6e"]
+[ext_resource type="Texture2D" uid="uid://dm0dsrc1bgxhu" path="res://Assets/UI/frustration_3.png" id="6_3xahs"]
+[ext_resource type="Texture2D" uid="uid://roavapxe40s8" path="res://Assets/UI/frustration_2.png" id="7_xa34w"]
+[ext_resource type="Texture2D" uid="uid://csqsacolhbnnh" path="res://Assets/UI/frustration_1.png" id="8_68kif"]
+[ext_resource type="Texture2D" uid="uid://bi1luit52lbhe" path="res://Assets/Keys/A.png" id="9_gaapl"]
+[ext_resource type="Texture2D" uid="uid://ck33o8mb1bbge" path="res://Assets/Keys/S.png" id="10_xt1j5"]
+[ext_resource type="Texture2D" uid="uid://cv46b8gyvy35t" path="res://Assets/Keys/D.png" id="11_psnam"]
+[ext_resource type="Texture2D" uid="uid://d28bxgtvcfguk" path="res://Assets/Keys/Blank.png" id="12_y650r"]
+[ext_resource type="Texture2D" uid="uid://bl82omwqokecf" path="res://Assets/Keys/W.png" id="13_afr70"]
+[ext_resource type="Texture2D" uid="uid://c3ea6tikmcvws" path="res://Assets/Keys/LMB.png" id="14_26dra"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_w3db8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_tue2i")
+
+[node name="Cover" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("2_acbkm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -47.5
+offset_top = -180.0
+offset_right = 47.5
+offset_bottom = -97.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Button" type="Button" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="Lungs" parent="." instance=ExtResource("3_5h2ux")]
+position = Vector2(1589, 902)
+
+[node name="lung_text" type="Label" parent="Lungs"]
+offset_left = -274.0
+offset_top = -328.0
+offset_right = 296.0
+offset_bottom = -72.0
+text = "Keep your breathing under control. When the lungs are highlighted you can hold your left mouse button down to take a deep breath. don't let go until the breath is complete. letting go too soon will make your breaths more rapid.  Watch out, Hyperventilating will add to your frustration! Try practicing below!"
+autowrap_mode = 3
+
+[node name="Title" type="Label" parent="."]
+offset_left = 642.0
+offset_right = 1271.0
+offset_bottom = 205.0
+theme_override_font_sizes/font_size = 150
+text = "Controls"
+
+[node name="frustration" type="Node" parent="."]
+
+[node name="Frustration5" type="Sprite2D" parent="frustration"]
+position = Vector2(1157, 556)
+texture = ExtResource("4_02d5s")
+
+[node name="Frustration4" type="Sprite2D" parent="frustration"]
+position = Vector2(1046, 523)
+texture = ExtResource("5_qla6e")
+
+[node name="Frustration3" type="Sprite2D" parent="frustration"]
+position = Vector2(958, 488)
+texture = ExtResource("6_3xahs")
+
+[node name="Frustration2" type="Sprite2D" parent="frustration"]
+position = Vector2(857, 524)
+texture = ExtResource("7_xa34w")
+
+[node name="Frustration1" type="Sprite2D" parent="frustration"]
+position = Vector2(746, 556)
+texture = ExtResource("8_68kif")
+
+[node name="frustration text" type="Label" parent="frustration"]
+offset_left = 684.0
+offset_top = 214.0
+offset_right = 1254.0
+offset_bottom = 403.0
+text = "The goal is to keep yourself as calm as possible before you inevitably storm out and quit. As time goes on, you'll get more frustrated. Once you've had too much, its game over! Try to scan as many items as you can before its over."
+autowrap_mode = 3
+
+[node name="scanning" type="Node" parent="."]
+
+[node name="scanning text" type="Label" parent="."]
+offset_left = 94.0
+offset_top = 595.0
+offset_right = 664.0
+offset_bottom = 784.0
+text = "Use the keyboard to scan items. Score points from each item and customer helped. Some items are hard to scan and you'll need to guess the key! As your frustration grows the scanning gets more complicated."
+autowrap_mode = 3
+
+[node name="A" type="Sprite2D" parent="."]
+position = Vector2(236, 904)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("9_gaapl")
+
+[node name="S" type="Sprite2D" parent="."]
+position = Vector2(334, 847)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("10_xt1j5")
+
+[node name="D" type="Sprite2D" parent="."]
+position = Vector2(429, 906)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("11_psnam")
+
+[node name="Blank" type="Sprite2D" parent="."]
+position = Vector2(332, 906)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("12_y650r")
+
+[node name="W" type="Sprite2D" parent="."]
+position = Vector2(333, 973)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("13_afr70")
+
+[node name="Lmb" type="Sprite2D" parent="."]
+position = Vector2(1398, 970)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("14_26dra")
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Button" to="." method="_on_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://qpseq5n48vbj"]
+[gd_scene load_steps=23 format=3 uid="uid://qpseq5n48vbj"]
 
 [ext_resource type="Script" path="res://Scenes/Game_Manager.gd" id="1_3cfg5"]
 [ext_resource type="Texture2D" uid="uid://bq0r68ifa38rn" path="res://Assets/Objects/Store.png" id="1_iojbl"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://q6s4ypjm4pu2" path="res://Scenes/final_text.tscn" id="16_4gts6"]
 [ext_resource type="PackedScene" uid="uid://c28wejx0jmcha" path="res://Scenes/score_screen.tscn" id="17_h0t2i"]
 [ext_resource type="PackedScene" uid="uid://ccydg0inr6yaj" path="res://Scenes/Items_Scanned_UI.tscn" id="18_exmi6"]
+[ext_resource type="AudioStream" uid="uid://dpev6rdlka5xm" path="res://Assets/Sounds/crowd.mp3" id="19_x66bq"]
 
 [sub_resource type="Curve2D" id="Curve2D_reeda"]
 _data = {
@@ -265,6 +266,13 @@ position = Vector2(951, 538)
 
 [node name="items_scanned_UI" parent="." instance=ExtResource("18_exmi6")]
 position = Vector2(447, 31)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_x66bq")
+volume_db = 1.0
+autoplay = true
+bus = &"Music"
+parameters/looping = true
 
 [connection signal="end_game" from="." to="." method="_on_end_game"]
 [connection signal="cashier_at_end" from="Path2D/Cashier" to="." method="_on_cashier_cashier_at_end"]

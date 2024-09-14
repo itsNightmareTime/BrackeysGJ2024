@@ -10,11 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://bsyxm5m1dnwxl" path="res://Scenes/Characters/Customer5.tscn" id="7_3ukba"]
 [ext_resource type="PackedScene" uid="uid://dm0qfuj7ior24" path="res://Scenes/Lungs.tscn" id="8_hoh6h"]
 [ext_resource type="Script" path="res://Scripts/CustomerSpawner.gd" id="9_jedks"]
-[ext_resource type="PackedScene" path="res://Scenes/scanner.tscn" id="10_hrdcb"]
-[ext_resource type="PackedScene" path="res://Scenes/frustration_UI.tscn" id="11_ymo6u"]
-[ext_resource type="PackedScene" path="res://Scenes/clock.tscn" id="13_0or76"]
-[ext_resource type="PackedScene" path="res://Scenes/customers_helped_UI.tscn" id="14_51e2c"]
-[ext_resource type="PackedScene" path="res://Scenes/text_bubble.tscn" id="15_llfot"]
+[ext_resource type="PackedScene" uid="uid://c6qh1ey5xwyrl" path="res://Scenes/scanner.tscn" id="10_hrdcb"]
+[ext_resource type="PackedScene" uid="uid://cltq38ult5tai" path="res://Scenes/frustration_UI.tscn" id="11_ymo6u"]
+[ext_resource type="PackedScene" uid="uid://cb8s53an2ypm7" path="res://Scenes/clock.tscn" id="13_0or76"]
+[ext_resource type="PackedScene" uid="uid://b0xhpyak8gxg4" path="res://Scenes/customers_helped_UI.tscn" id="14_51e2c"]
+[ext_resource type="PackedScene" uid="uid://dfyfp0o5mdwf7" path="res://Scenes/text_bubble.tscn" id="15_llfot"]
 
 [sub_resource type="Curve2D" id="Curve2D_vsdj7"]
 _data = {

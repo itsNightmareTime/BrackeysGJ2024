@@ -49,10 +49,12 @@ var comments: Array =  [
 		"The staff is so unhelpful.",
 		"I can't believe how long the wait is.",
 		"This place is so outdated.",
-		"The products here are not cheap."
+		"The products here are not cheap.",
+		"Why would someone make a game about this?"
 ]
 	
 func _ready() -> void:
+	animation_player.play("reset")
 	randomGen.randomize()
 	var new_wait_time = randomGen.randf_range(min_wait, max_wait)
 	timer.wait_time = new_wait_time
@@ -64,9 +66,10 @@ func pop_out() -> void:
 	visible = true
 	
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
-	animation_player.stop()
-	visible = false
-
+	animation_player.play("reset")
+	if _anim_name == animation_name:
+		animation_player.stop()
+		visible = false
 
 func _on_timer_timeout() -> void:
 	pop_out()

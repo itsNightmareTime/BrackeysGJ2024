@@ -9,6 +9,7 @@ extends Node2D
 @onready var customers_helped_ui: Node2D = $Customers_helped_UI
 @onready var final_text: Node2D = $Store/final_text
 @onready var cashier: Cashier = $Path2D/Cashier
+@onready var score_screen: Node2D = $score_screen
 
 signal end_game
 
@@ -25,6 +26,8 @@ var hyperventilation_increment_timer: Timer = Timer.new()
 var can_add_hyper_increment: bool = true
 var customers_helped: int = 0
 var is_game_over: bool = false
+var item_total: int 
+var total_time: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -37,7 +40,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	print(current_frustration)
 	if current_frustration >= 100.0:
 		if not is_game_over:
 			is_game_over = true
@@ -62,6 +64,7 @@ func update_frustration_ui() -> void:
 	
 func update_scanner() -> void:
 	scanner.set_frustration_level(current_frustration)
+	item_total = scanner.total_items_scanned
 
 # Emitted from the cart once the last item has been scanned
 func _on_scanner_cart_empty() -> void:
@@ -92,6 +95,9 @@ func _on_Hyper_Timer_Timeout() -> void:
 
 func _on_end_game() -> void:
 	if is_game_over:
+		total_time = clock.time_elapsed
+		item_total = scanner.total_items_scanned
+
 		clock.stop_clock()
 		scanner.free()
 		customer_path_line_to_register.free()
@@ -99,3 +105,8 @@ func _on_end_game() -> void:
 		final_text.game_over()
 		cashier.game_over = true
 		# score screen needs to display
+
+
+func _on_cashier_cashier_at_end() -> void:
+	final_text.visible = false
+	score_screen.set_score_board(total_time, item_total, customers_helped)

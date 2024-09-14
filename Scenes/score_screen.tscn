@@ -1,0 +1,219 @@
+[gd_scene load_steps=13 format=3 uid="uid://c28wejx0jmcha"]
+
+[ext_resource type="Script" path="res://Scripts/score_screen.gd" id="1_fpkns"]
+[ext_resource type="Texture2D" uid="uid://djh73lj1o7247" path="res://Assets/UI/score_screen.png" id="1_vu8vc"]
+[ext_resource type="Texture2D" uid="uid://d3tmfk6aoyfk" path="res://Assets/UI/Clock_UI.png" id="2_8mw5j"]
+[ext_resource type="Texture2D" uid="uid://dskfn8n0023de" path="res://Assets/UI/Item_UI.png" id="3_pefyw"]
+[ext_resource type="Texture2D" uid="uid://k7rqkhsc1ja7" path="res://Assets/UI/customer_icon.png" id="4_wohc0"]
+[ext_resource type="Texture2D" uid="uid://drawn1rbpexs1" path="res://Assets/UI/white_line.png" id="5_i4x7u"]
+[ext_resource type="Texture2D" uid="uid://j4n8cefcd0he" path="res://Assets/UI/plus.png" id="6_vgbfq"]
+[ext_resource type="Texture2D" uid="uid://cmpx7tfeq7qom" path="res://Assets/UI/times.png" id="7_cjwu4"]
+[ext_resource type="Theme" uid="uid://c0bs04tbhotki" path="res://MainTheme.tres" id="9_jxas0"]
+
+[sub_resource type="Animation" id="Animation_mivyl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_07kcr"]
+resource_name = "appear"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.93333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dg8x0"]
+_data = {
+"RESET": SubResource("Animation_mivyl"),
+"appear": SubResource("Animation_07kcr")
+}
+
+[node name="score_screen" type="Node2D"]
+script = ExtResource("1_fpkns")
+
+[node name="buttons" type="Node" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="buttons"]
+
+[node name="OuterMargin" type="MarginContainer" parent="buttons/CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 827.0
+offset_top = 918.0
+offset_right = -825.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainCanvasItem" type="Control" parent="buttons/CanvasLayer/OuterMargin"]
+layout_mode = 2
+
+[node name="MenuPanel" type="PanelContainer" parent="buttons/CanvasLayer/OuterMargin/MainCanvasItem"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="buttons/CanvasLayer/OuterMargin/MainCanvasItem/MenuPanel"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="buttons/CanvasLayer/OuterMargin/MainCanvasItem/MenuPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Home_Button" type="Button" parent="buttons/CanvasLayer/OuterMargin/MainCanvasItem/MenuPanel/MarginContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("9_jxas0")
+text = "Home"
+
+[node name="Exit_Button" type="Button" parent="buttons/CanvasLayer/OuterMargin/MainCanvasItem/MenuPanel/MarginContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("9_jxas0")
+text = "Exit"
+
+[node name="background" type="Sprite2D" parent="."]
+texture = ExtResource("1_vu8vc")
+
+[node name="title_text" type="RichTextLabel" parent="."]
+offset_left = -320.0
+offset_top = -451.0
+offset_right = 352.0
+offset_bottom = -278.0
+theme_override_font_sizes/normal_font_size = 125
+text = "Final Score"
+
+[node name="final_score_value" type="RichTextLabel" parent="."]
+offset_left = 10.0
+offset_top = 177.0
+offset_right = 374.0
+offset_bottom = 350.0
+theme_override_font_sizes/normal_font_size = 125
+text = "00000"
+
+[node name="clock_icon" type="Sprite2D" parent="."]
+position = Vector2(-232.5, -130)
+scale = Vector2(2, 2)
+texture = ExtResource("2_8mw5j")
+
+[node name="clock_total" type="RichTextLabel" parent="clock_icon"]
+offset_left = 40.25
+offset_top = -23.5
+offset_right = 127.25
+offset_bottom = 21.5
+theme_override_colors/default_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="item_icon" type="Sprite2D" parent="."]
+position = Vector2(-240.5, -16)
+scale = Vector2(2, 2)
+texture = ExtResource("3_pefyw")
+
+[node name="item_total" type="RichTextLabel" parent="item_icon"]
+offset_left = 43.75
+offset_top = -20.0
+offset_right = 130.75
+offset_bottom = 25.0
+theme_override_colors/default_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="customer_icon" type="Sprite2D" parent="."]
+position = Vector2(-238.5, 101)
+scale = Vector2(2, 2)
+texture = ExtResource("4_wohc0")
+
+[node name="customer_total" type="RichTextLabel" parent="customer_icon"]
+offset_left = 42.25
+offset_top = -18.5
+offset_right = 129.25
+offset_bottom = 26.5
+theme_override_colors/default_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="clock_multiply" type="Sprite2D" parent="."]
+position = Vector2(80, -126)
+scale = Vector2(2, 2)
+texture = ExtResource("7_cjwu4")
+
+[node name="clock_multiply_value" type="RichTextLabel" parent="clock_multiply"]
+offset_left = 51.0
+offset_top = -24.0
+offset_right = 138.0
+offset_bottom = 21.0
+theme_override_colors/default_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+text = "10"
+metadata/_edit_use_anchors_ = true
+
+[node name="item_multiply" type="Sprite2D" parent="."]
+position = Vector2(75, -13)
+scale = Vector2(2, 2)
+texture = ExtResource("7_cjwu4")
+
+[node name="item_multiply_value" type="RichTextLabel" parent="item_multiply"]
+offset_left = 51.0
+offset_top = -24.0
+offset_right = 138.0
+offset_bottom = 21.0
+theme_override_colors/default_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+text = "5"
+metadata/_edit_use_anchors_ = true
+
+[node name="customer_multiply" type="Sprite2D" parent="."]
+position = Vector2(84, 101)
+scale = Vector2(2, 2)
+texture = ExtResource("7_cjwu4")
+
+[node name="customer_multiply_value" type="RichTextLabel" parent="customer_multiply"]
+offset_left = 51.0
+offset_top = -24.0
+offset_right = 138.0
+offset_bottom = 21.0
+theme_override_colors/default_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+text = "20"
+metadata/_edit_use_anchors_ = true
+
+[node name="white_line" type="Sprite2D" parent="."]
+position = Vector2(-15.5, 165)
+texture = ExtResource("5_i4x7u")
+
+[node name="plus" type="Sprite2D" parent="."]
+position = Vector2(-381.5, 109)
+texture = ExtResource("6_vgbfq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dg8x0")
+}
+speed_scale = 4.0
+
+[connection signal="pressed" from="buttons/CanvasLayer/OuterMargin/MainCanvasItem/MenuPanel/MarginContainer/GridContainer/Home_Button" to="." method="_on_home_button_pressed"]
+[connection signal="pressed" from="buttons/CanvasLayer/OuterMargin/MainCanvasItem/MenuPanel/MarginContainer/GridContainer/Exit_Button" to="." method="_on_exit_button_pressed"]

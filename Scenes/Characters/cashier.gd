@@ -3,7 +3,7 @@ extends PathFollow2D
 class_name Cashier
 
 # a signal to emit when at the end of the path
-signal at_end
+signal cashier_at_end
 @export var move_speed: int = 200
 var at_end_of_path: bool = false
 var game_over: bool = false
@@ -15,4 +15,5 @@ func _process(delta: float):
 		progress = progress + (move_speed * delta)
 		if progress_ratio == 1 and not at_end_of_path:
 			at_end_of_path = true
+			cashier_at_end.emit()
 			free()

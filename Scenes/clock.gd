@@ -19,3 +19,6 @@ func _on_timer_timeout() -> void:
 	time_elapsed += 1
 	update_label()
 	one_second.emit()
+	
+func stop_clock() -> void:
+	timer.stop()

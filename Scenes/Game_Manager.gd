@@ -7,9 +7,12 @@ extends Node2D
 @onready var customer_path_exit: Path2D = $CustomerPathExit
 @onready var clock: Node2D = $Clock
 @onready var customers_helped_ui: Node2D = $Customers_helped_UI
+@onready var final_text: Node2D = $Store/final_text
+
+signal end_game
 
 @export var max_frustration: float = 100
-@export var min_frustration: float = 1
+@export var min_frustration: float = 99
 var current_frustration: float = min_frustration
 # used to convert the frustration to lung_speed values by dividing current_frustration by this
 @export var lung_speed_increment_divisor: float = 50000
@@ -30,13 +33,16 @@ func _ready() -> void:
 	hyperventilation_increment_timer.start()
 	scanner.generate_shopping_cart()
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	#update_frustration()
-	update_lungs()
-	update_scanner()
-	update_frustration_ui()
+	print(current_frustration)
+	if current_frustration >= 100.0:
+		end_game.emit()
+		end_game.disconnect(_on_end_game)
+	else:
+		update_lungs()
+		update_scanner()
+		update_frustration_ui()
 	
 func update_frustration() -> void:
 	var new_frustration = clock.time_elapsed * clock_frustration_increment
@@ -80,3 +86,13 @@ func increase_frustration(increment: float) -> void:
 func _on_Hyper_Timer_Timeout() -> void:
 	can_add_hyper_increment = true
 	hyperventilation_increment_timer.start()
+
+func _on_end_game() -> void:
+	clock.stop_clock()
+	scanner.free()
+	customer_path_line_to_register.free()
+	customer_path_exit.free()
+	final_text.game_over()
+	# cashier needs to leave
+	# score screen needs to display
+	pass # Replace with function body.

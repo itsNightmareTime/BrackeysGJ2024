@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cltq38ult5tai" path="res://Scenes/frustration_UI.tscn" id="11_ymo6u"]
 [ext_resource type="PackedScene" uid="uid://cb8s53an2ypm7" path="res://Scenes/clock.tscn" id="13_0or76"]
 [ext_resource type="PackedScene" uid="uid://b0xhpyak8gxg4" path="res://Scenes/customers_helped_UI.tscn" id="14_51e2c"]
-[ext_resource type="PackedScene" uid="uid://dfyfp0o5mdwf7" path="res://Scenes/text_bubble.tscn" id="15_llfot"]
+[ext_resource type="PackedScene" uid="uid://s6na6usx5x7b" path="res://Scenes/text_bubble.tscn" id="15_llfot"]
 [ext_resource type="PackedScene" uid="uid://q6s4ypjm4pu2" path="res://Scenes/final_text.tscn" id="16_4gts6"]
 
 [sub_resource type="Curve2D" id="Curve2D_vsdj7"]
@@ -36,6 +36,10 @@ script = ExtResource("1_3cfg5")
 z_index = -3
 position = Vector2(960, 540)
 texture = ExtResource("1_iojbl")
+
+[node name="final_text" parent="Store" instance=ExtResource("16_4gts6")]
+visible = false
+z_index = 4
 
 [node name="Cashier" parent="." instance=ExtResource("2_j8olq")]
 position = Vector2(1557, 280)
@@ -241,8 +245,7 @@ position = Vector2(1074, 248)
 [node name="text_bubble22" parent="text_bubbles" instance=ExtResource("15_llfot")]
 position = Vector2(336, 1057)
 
-[node name="final_text" parent="." instance=ExtResource("16_4gts6")]
-
+[connection signal="end_game" from="." to="." method="_on_end_game"]
 [connection signal="bad_breathing" from="Lungs" to="." method="_on_lungs_bad_breathing"]
 [connection signal="hyperventilating" from="Lungs" to="." method="_on_lungs_hyperventilating"]
 [connection signal="cart_empty" from="Scanner" to="." method="_on_scanner_cart_empty"]

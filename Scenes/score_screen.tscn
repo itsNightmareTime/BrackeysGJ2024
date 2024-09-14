@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/score_screen.gd" id="1_fpkns"]
 [ext_resource type="Texture2D" uid="uid://djh73lj1o7247" path="res://Assets/UI/score_screen.png" id="1_vu8vc"]
-[ext_resource type="Texture2D" uid="uid://d3tmfk6aoyfk" path="res://Assets/UI/Clock_UI.png" id="2_8mw5j"]
+[ext_resource type="Texture2D" uid="uid://uenr4pxwxcte" path="res://Assets/UI/Clock_UI.png" id="2_8mw5j"]
 [ext_resource type="Texture2D" uid="uid://dskfn8n0023de" path="res://Assets/UI/Item_UI.png" id="3_pefyw"]
 [ext_resource type="Texture2D" uid="uid://k7rqkhsc1ja7" path="res://Assets/UI/customer_icon.png" id="4_wohc0"]
 [ext_resource type="Texture2D" uid="uid://drawn1rbpexs1" path="res://Assets/UI/white_line.png" id="5_i4x7u"]

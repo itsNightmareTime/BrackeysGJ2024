@@ -35,7 +35,10 @@ var comments: Array =  [
 		"I can't believe how rude the staff is.",
 		"This line is taking forever.",
 		"Do they even clean this place?",
+		"I don't shower",
 		"The prices here are outrageous.",
+		"I've never been loved",
+		"The floor is so sticky!",
 		"I can't find anything I need.",
 		"This store is a mess.",
 		"Why is everything out of stock?",
@@ -50,7 +53,8 @@ var comments: Array =  [
 		"I can't believe how long the wait is.",
 		"This place is so outdated.",
 		"The products here are not cheap.",
-		"Why would someone make a game about this?"
+		"Why would someone make a game about this?",
+		"Why Would someone waste their time playing this?"
 ]
 	
 func _ready() -> void:

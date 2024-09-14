@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var rich_text_label: RichTextLabel = $Control/RichTextLabel
+@onready var rich_text_label: Label = $Control/RichTextLabel
 @onready var timer: Timer = $Control/Timer
 var time_elapsed: int = 0
 signal one_second

@@ -1,63 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cb8s53an2ypm7"]
+[gd_scene load_steps=4 format=3 uid="uid://cb8s53an2ypm7"]
 
 [ext_resource type="Script" path="res://Scripts/clock.gd" id="1_rliq4"]
 [ext_resource type="Theme" uid="uid://c0bs04tbhotki" path="res://MainTheme.tres" id="2_lxet0"]
 [ext_resource type="Texture2D" uid="uid://uenr4pxwxcte" path="res://Assets/UI/Clock_UI.png" id="3_sskwh"]
-
-[sub_resource type="FontFile" id="FontFile_3t06t"]
-subpixel_positioning = 0
-msdf_pixel_range = 14
-msdf_size = 128
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/32/0/ascent = 0.0
-cache/0/32/0/descent = 0.0
-cache/0/32/0/underline_position = 0.0
-cache/0/32/0/underline_thickness = 0.0
-cache/0/32/0/scale = 1.0
-cache/0/2/0/ascent = 0.0
-cache/0/2/0/descent = 0.0
-cache/0/2/0/underline_position = 0.0
-cache/0/2/0/underline_thickness = 0.0
-cache/0/2/0/scale = 1.0
-cache/0/3/0/ascent = 0.0
-cache/0/3/0/descent = 0.0
-cache/0/3/0/underline_position = 0.0
-cache/0/3/0/underline_thickness = 0.0
-cache/0/3/0/scale = 1.0
-cache/0/1/0/ascent = 0.0
-cache/0/1/0/descent = 0.0
-cache/0/1/0/underline_position = 0.0
-cache/0/1/0/underline_thickness = 0.0
-cache/0/1/0/scale = 1.0
-cache/0/10/0/ascent = 0.0
-cache/0/10/0/descent = 0.0
-cache/0/10/0/underline_position = 0.0
-cache/0/10/0/underline_thickness = 0.0
-cache/0/10/0/scale = 1.0
-cache/0/100/0/ascent = 0.0
-cache/0/100/0/descent = 0.0
-cache/0/100/0/underline_position = 0.0
-cache/0/100/0/underline_thickness = 0.0
-cache/0/100/0/scale = 1.0
-cache/0/80/0/ascent = 0.0
-cache/0/80/0/descent = 0.0
-cache/0/80/0/underline_position = 0.0
-cache/0/80/0/underline_thickness = 0.0
-cache/0/80/0/scale = 1.0
-cache/0/70/0/ascent = 0.0
-cache/0/70/0/descent = 0.0
-cache/0/70/0/underline_position = 0.0
-cache/0/70/0/underline_thickness = 0.0
-cache/0/70/0/scale = 1.0
-cache/0/65/0/ascent = 0.0
-cache/0/65/0/descent = 0.0
-cache/0/65/0/underline_position = 0.0
-cache/0/65/0/underline_thickness = 0.0
-cache/0/65/0/scale = 1.0
 
 [node name="Clock" type="Node2D"]
 script = ExtResource("1_rliq4")
@@ -69,15 +14,14 @@ offset_right = 175.0
 offset_bottom = 104.0
 theme = ExtResource("2_lxet0")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+[node name="RichTextLabel" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = -7.0
 offset_top = 13.0
 offset_right = 175.0
 offset_bottom = 101.0
 theme = ExtResource("2_lxet0")
-theme_override_fonts/normal_font = SubResource("FontFile_3t06t")
-theme_override_font_sizes/normal_font_size = 65
+theme_override_font_sizes/font_size = 65
 text = "00
 "
 

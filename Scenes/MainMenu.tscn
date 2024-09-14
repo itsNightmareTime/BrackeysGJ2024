@@ -1,11 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://cog45ywyroodj"]
+[gd_scene load_steps=17 format=3 uid="uid://cog45ywyroodj"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_y6rw6"]
 [ext_resource type="Texture2D" uid="uid://bq0r68ifa38rn" path="res://Assets/Objects/Store.png" id="1_yaj5t"]
 [ext_resource type="Texture2D" uid="uid://c8wnna2i5d21f" path="res://Assets/UI/cover.png" id="3_45hgx"]
 [ext_resource type="Theme" uid="uid://c0bs04tbhotki" path="res://MainTheme.tres" id="3_vihyn"]
 [ext_resource type="PackedScene" uid="uid://wqv5j3lrrreu" path="res://Scenes/VolumeControl.tscn" id="4_gcomr"]
-[ext_resource type="AudioStream" uid="uid://borijloea3y01" path="res://Assets/Sounds/Musak.mp3" id="5_ik5ov"]
 [ext_resource type="Texture2D" uid="uid://se6qv14ybqfo" path="res://Assets/UI/Scanning_UI.png" id="6_8pmgq"]
 [ext_resource type="Texture2D" uid="uid://bd3u6gpaaw6km" path="res://Assets/Keys/F.png" id="7_vjvbs"]
 [ext_resource type="Texture2D" uid="uid://kfwask4f560s" path="res://Assets/Keys/U.png" id="8_drqrw"]
@@ -108,11 +107,6 @@ text = "Controls
 layout_mode = 2
 theme = ExtResource("3_vihyn")
 text = "Exit"
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_ik5ov")
-autoplay = true
-bus = &"Music"
 
 [node name="ScanningUi" type="Sprite2D" parent="."]
 position = Vector2(963, 228)

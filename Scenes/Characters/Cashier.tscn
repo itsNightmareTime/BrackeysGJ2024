@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddue67srgxhwd"]
+[gd_scene load_steps=6 format=3 uid="uid://ddue67srgxhwd"]
 
+[ext_resource type="Script" path="res://Scenes/Characters/cashier.gd" id="1_lsffp"]
 [ext_resource type="Texture2D" uid="uid://c5rojg84swb7w" path="res://Assets/Characters/Cashier.png" id="1_nt4pe"]
 
 [sub_resource type="Animation" id="Animation_dh6vt"]
@@ -39,7 +40,10 @@ _data = {
 "idle": SubResource("Animation_cdo7g")
 }
 
-[node name="Cashier" type="Node2D"]
+[node name="Cashier" type="PathFollow2D"]
+loop = false
+script = ExtResource("1_lsffp")
+move_speed = 400
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_nt4pe")

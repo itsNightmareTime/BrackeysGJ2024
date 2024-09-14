@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccydg0inr6yaj"]
+
+[ext_resource type="Script" path="res://Scripts/items_scanned_ui.gd" id="1_quoko"]
+[ext_resource type="Texture2D" uid="uid://dskfn8n0023de" path="res://Assets/UI/Item_UI.png" id="2_nbyyl"]
+
+[node name="Customers_helped_UI" type="Node2D"]
+script = ExtResource("1_quoko")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_nbyyl")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Sprite2D"]
+offset_left = 33.0
+offset_top = -20.0
+offset_right = 120.0
+offset_bottom = 25.0
+theme_override_colors/default_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+text = "0"
+metadata/_edit_use_anchors_ = true

@@ -8,6 +8,7 @@ extends Node2D
 @onready var clock: Node2D = $Clock
 @onready var customers_helped_ui: Node2D = $Customers_helped_UI
 @onready var final_text: Node2D = $Store/final_text
+@onready var cashier: Cashier = $Path2D/Cashier
 
 signal end_game
 
@@ -23,6 +24,7 @@ var current_lung_speed_increment: float = current_frustration / lung_speed_incre
 var hyperventilation_increment_timer: Timer = Timer.new()
 var can_add_hyper_increment: bool = true
 var customers_helped: int = 0
+var is_game_over: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -37,8 +39,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	print(current_frustration)
 	if current_frustration >= 100.0:
-		end_game.emit()
-		end_game.disconnect(_on_end_game)
+		if not is_game_over:
+			is_game_over = true
+			end_game.emit()
 	else:
 		update_lungs()
 		update_scanner()
@@ -88,11 +91,11 @@ func _on_Hyper_Timer_Timeout() -> void:
 	hyperventilation_increment_timer.start()
 
 func _on_end_game() -> void:
-	clock.stop_clock()
-	scanner.free()
-	customer_path_line_to_register.free()
-	customer_path_exit.free()
-	final_text.game_over()
-	# cashier needs to leave
-	# score screen needs to display
-	pass # Replace with function body.
+	if is_game_over:
+		clock.stop_clock()
+		scanner.free()
+		customer_path_line_to_register.free()
+		customer_path_exit.free()
+		final_text.game_over()
+		cashier.game_over = true
+		# score screen needs to display

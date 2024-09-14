@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://q6s4ypjm4pu2"]
 
 [ext_resource type="Texture2D" uid="uid://bpxowyv8xxnse" path="res://Assets/UI/large_text_bubble.png" id="1_gcb5w"]
-[ext_resource type="Script" path="res://Scenes/end_game_bubble.gd" id="1_ne3uw"]
+[ext_resource type="Script" path="res://Scripts/end_game_bubble.gd" id="1_ne3uw"]
 
 [sub_resource type="Animation" id="Animation_85gsy"]
 length = 0.001

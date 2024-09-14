@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://qpseq5n48vbj"]
+[gd_scene load_steps=20 format=3 uid="uid://qpseq5n48vbj"]
 
 [ext_resource type="Script" path="res://Scenes/Game_Manager.gd" id="1_3cfg5"]
 [ext_resource type="Texture2D" uid="uid://bq0r68ifa38rn" path="res://Assets/Objects/Store.png" id="1_iojbl"]
@@ -16,6 +16,12 @@
 [ext_resource type="PackedScene" uid="uid://b0xhpyak8gxg4" path="res://Scenes/customers_helped_UI.tscn" id="14_51e2c"]
 [ext_resource type="PackedScene" uid="uid://s6na6usx5x7b" path="res://Scenes/text_bubble.tscn" id="15_llfot"]
 [ext_resource type="PackedScene" uid="uid://q6s4ypjm4pu2" path="res://Scenes/final_text.tscn" id="16_4gts6"]
+
+[sub_resource type="Curve2D" id="Curve2D_reeda"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1558, 281, 0, 0, 0, 0, 1249, 282, 0, 0, 0, 0, 1249, 709, 0, 0, 0, 0, 1652, 709, 0, 0, 0, 0, 1652, 1153)
+}
+point_count = 5
 
 [sub_resource type="Curve2D" id="Curve2D_vsdj7"]
 _data = {
@@ -41,8 +47,12 @@ texture = ExtResource("1_iojbl")
 visible = false
 z_index = 4
 
-[node name="Cashier" parent="." instance=ExtResource("2_j8olq")]
-position = Vector2(1557, 280)
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_reeda")
+
+[node name="Cashier" parent="Path2D" instance=ExtResource("2_j8olq")]
+position = Vector2(1558, 281)
+rotation = 3.13836
 
 [node name="Lungs" parent="." instance=ExtResource("8_hoh6h")]
 position = Vector2(1374, 900)

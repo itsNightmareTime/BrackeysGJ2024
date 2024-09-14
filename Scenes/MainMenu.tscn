@@ -1,10 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://cog45ywyroodj"]
+[gd_scene load_steps=17 format=3 uid="uid://cog45ywyroodj"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_y6rw6"]
 [ext_resource type="Texture2D" uid="uid://bq0r68ifa38rn" path="res://Assets/Objects/Store.png" id="1_yaj5t"]
 [ext_resource type="Theme" uid="uid://c0bs04tbhotki" path="res://MainTheme.tres" id="3_vihyn"]
 [ext_resource type="PackedScene" uid="uid://wqv5j3lrrreu" path="res://Scenes/VolumeControl.tscn" id="4_gcomr"]
 [ext_resource type="AudioStream" uid="uid://borijloea3y01" path="res://Assets/Sounds/Musak.mp3" id="5_ik5ov"]
+[ext_resource type="Texture2D" uid="uid://se6qv14ybqfo" path="res://Assets/UI/Scanning_UI.png" id="6_8pmgq"]
+[ext_resource type="Texture2D" uid="uid://bd3u6gpaaw6km" path="res://Assets/Keys/F.png" id="7_vjvbs"]
+[ext_resource type="Texture2D" uid="uid://kfwask4f560s" path="res://Assets/Keys/U.png" id="8_drqrw"]
+[ext_resource type="Texture2D" uid="uid://cqwowjju8b8dq" path="res://Assets/Keys/R.png" id="9_jli1j"]
+[ext_resource type="Texture2D" uid="uid://c5weyw6nnega2" path="res://Assets/Keys/Y.png" id="10_dg18l"]
+[ext_resource type="Texture2D" uid="uid://r0dyhcrmudjs" path="res://Assets/Keys/C.png" id="11_7kpee"]
+[ext_resource type="Texture2D" uid="uid://bpsgegf461n73" path="res://Assets/Keys/H.png" id="12_66tdm"]
+[ext_resource type="Texture2D" uid="uid://cq3i4swtnjnif" path="res://Assets/Keys/E.png" id="13_36o25"]
+[ext_resource type="Texture2D" uid="uid://co5c8lxrotf85" path="res://Assets/Keys/K.png" id="14_f4ver"]
+[ext_resource type="Texture2D" uid="uid://bf48knelyre7w" path="res://Assets/Keys/O.png" id="15_npham"]
+[ext_resource type="Texture2D" uid="uid://kopm4hago6k3" path="res://Assets/Keys/T.png" id="16_c5jy8"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_y6rw6")
@@ -27,8 +38,10 @@ layout_mode = 2
 
 [node name="VolumeOptions" type="PanelContainer" parent="CanvasLayer/OuterMargin/MainCanvasItem"]
 layout_mode = 1
-offset_right = 393.0
-offset_bottom = 152.0
+offset_left = 1.0
+offset_top = 895.0
+offset_right = 394.0
+offset_bottom = 1047.0
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/OuterMargin/MainCanvasItem/VolumeOptions"]
 layout_mode = 2
@@ -90,6 +103,74 @@ text = "Exit"
 stream = ExtResource("5_ik5ov")
 autoplay = true
 bus = &"Music"
+
+[node name="ScanningUi" type="Sprite2D" parent="."]
+position = Vector2(962, 333)
+texture = ExtResource("6_8pmgq")
+
+[node name="title_Fury" type="Node" parent="."]
+
+[node name="F" type="Sprite2D" parent="title_Fury"]
+position = Vector2(1153.76, 328.76)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("7_vjvbs")
+
+[node name="U2" type="Sprite2D" parent="title_Fury"]
+position = Vector2(1250.76, 328.76)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("8_drqrw")
+
+[node name="R" type="Sprite2D" parent="title_Fury"]
+position = Vector2(1347.76, 328.76)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("9_jli1j")
+
+[node name="Y" type="Sprite2D" parent="title_Fury"]
+position = Vector2(1444.76, 328.76)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("10_dg18l")
+
+[node name="title_checkout" type="Node" parent="."]
+
+[node name="C" type="Sprite2D" parent="title_checkout"]
+position = Vector2(267.76, 326.76)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("11_7kpee")
+
+[node name="C2" type="Sprite2D" parent="title_checkout"]
+position = Vector2(558.76, 328.76)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("11_7kpee")
+
+[node name="H" type="Sprite2D" parent="title_checkout"]
+position = Vector2(364.76, 326.76)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("12_66tdm")
+
+[node name="E" type="Sprite2D" parent="title_checkout"]
+position = Vector2(461.76, 327.76)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("13_36o25")
+
+[node name="K" type="Sprite2D" parent="title_checkout"]
+position = Vector2(655.76, 328.76)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("14_f4ver")
+
+[node name="O" type="Sprite2D" parent="title_checkout"]
+position = Vector2(752.76, 328.76)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("15_npham")
+
+[node name="U" type="Sprite2D" parent="title_checkout"]
+position = Vector2(849.76, 328.76)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("8_drqrw")
+
+[node name="T" type="Sprite2D" parent="title_checkout"]
+position = Vector2(945, 329)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("16_c5jy8")
 
 [connection signal="pressed" from="CanvasLayer/OuterMargin/MainCanvasItem/MenuPanel/MarginContainer/GridContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/OuterMargin/MainCanvasItem/MenuPanel/MarginContainer/GridContainer/Button" to="." method="_on_button_pressed"]

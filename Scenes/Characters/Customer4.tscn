@@ -99,6 +99,7 @@ _data = {
 z_index = -2
 loop = false
 script = ExtResource("1_ydvyo")
+move_speed = 400
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_dxrdo")

@@ -13,8 +13,6 @@ extends Node2D
 @onready var scanner: Node2D = $"../Scanner"
 var current_customer = null
 
-signal at_register
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -35,6 +33,7 @@ func spawn_new_customer():
 # Move the customer to the next path is specified and reset their progress 
 # and stop listening for their at end signal
 func move_customer_to_next_path():
+	scanner.cart_empty.disconnect(move_customer_to_next_path)
 	current_customer.reparent(next_path)
 	current_customer.progress = 0
 	current_customer.at_end_of_path = false

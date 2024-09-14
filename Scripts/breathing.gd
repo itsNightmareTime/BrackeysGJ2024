@@ -148,11 +148,11 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		
 	if current_breath_state == breathingState.breathe_out:
 		can_breath_in = false
-		if not is_breathing_in:
-			can_breathe_again = true
-		else:
+		if is_breathing_in and can_breathe_again:
 			slow_down_lung_speed(breathing_speed_success)
 			spawn_feedback_text("good!", "blue")
+		if not is_breathing_in:
+			can_breathe_again = true
 		shader_off()
 		
 	animation_player.play(animation_names[current_breath_state])

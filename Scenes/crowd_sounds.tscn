@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c75ymfbhj5e74"]
+
+[ext_resource type="Script" path="res://crowd_sounds.gd" id="1_ic4ty"]
+[ext_resource type="AudioStream" uid="uid://dpev6rdlka5xm" path="res://Assets/Sounds/crowd.mp3" id="2_e77ln"]
+
+[node name="Crowd_sounds" type="Node2D"]
+script = ExtResource("1_ic4ty")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_e77ln")
+volume_db = 1.0
+autoplay = true
+bus = &"Music"
+parameters/looping = true
+
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
